@@ -1,15 +1,15 @@
-# tdtk
+# Trauma Director Tool Kit (tdtk)
 Trauma director tool kit repository
 # Description
 The trauma director tool kit is a collection of files and packages designed to allow trauma professionals to analyze, blind and graphically display pertinant clinical information.  Where possible the ACS care of the critially injured patient criteria are used:
 
-```{html}
+
 https://www.facs.org/~/media/files/quality%20programs/trauma/vrc%20resources/resources%20for%20optimal%20care.ashx
-```
 
-The tdtk is not designed to supplant ACS excellent work with NTDM or TQUIP but meant to help trauma directors with a eye to rural/poorly resourced trauma system report analysis.  See Chapter 15 in ACS care of the critically injured patient.
 
->A trauma registry can be valuable only if the data it contains can be transformed into useful information through the process of report writing. Trauma registry reports support decision making and guide the management of the trauma center. Most trauma registry software provides for the generation of several standard reports that summarize different ways to address specific questions or areas of concern. Most standard reports are oriented to anticipate the needs of a trauma center’s PIPS program and provide the needed information. This capability should be built into the software itself or achieved by exporting the data to a separate spreadsheet, relational database, or statistical program.
+The tdtk is not designed to supplant ACS excellent work with NTDM or TQUIP but meant to help trauma directors with a eye to rural/poorly resourced trauma system report analysis.  See Chapter 15 in ACS care of the critically injured patient:
+
+>"A trauma registry can be valuable only if the data it contains can be transformed into useful information through the process of report writing. Trauma registry reports support decision making and guide the management of the trauma center. Most trauma registry software provides for the generation of several standard reports that summarize different ways to address specific questions or areas of concern. Most standard reports are oriented to anticipate the needs of a trauma center’s PIPS program and provide the needed information. This capability should be built into the software itself or achieved by exporting the data to a separate spreadsheet, relational database, or statistical program."
 
 # Installation
 
