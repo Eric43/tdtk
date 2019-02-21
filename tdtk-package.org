@@ -1,0 +1,73 @@
+* Trauma director tool kit 
+
+The goal of this org documant is to put the initial public release of
+the trauma director tool kit (TDTK) into a basic org document for
+later reference. The initial minimimal viable product release is done
+with minimal functions designed for basic cleaniing and data
+analysis. The main package and R files are located on a GitHub
+repository:  (https://github.com/Eric43/tdtk .  These function can be
+used alone or in conjunction with tdtk markdown and example R files to
+help with patient analysis.  The funcitons currently comprize of:
+
+
+-  age_cat() DONE
+-  blind_tdtk() TODO was part of read_tdtk but seperating for ease of
+   use.
+-  ctr2cir() DONE
+-  center2circle() DONE
+-  disp_cat() DONE (basic) Dispensation cats derived from limited subset
+- icd_cat() DONE (basic) ICD catagory based on text needs updating 
+- iss_cat() DONE Used standard referenced ISS bins
+- read_tdtk() DONE in testing for xls or csv.  Added xls
+   functionality.
+- route2center() TODO goal is to use zip or obscured addresses to
+  overlay all of the "estimated" routes and plot alpha level/N as a
+  way to find commonly traveled routes etc.
+- zip_clean() DONE (basic) derived from a limited subset need to
+  rewrite using regex and extract the necessary run of 5 0...9.
+
+
+
+In addition to the tdtk-package a colletion of R functions, there are
+markdown/R-markdown and later bookdown files for the development of
+individualized dynamic documents (Refs).  The initial goal of the
+markdown files is to provide a basic context to analyzie trauma
+patient data.  These data analysis are broken into sections/chapters
+currently sections are defined as:
+
+- Data loading/cleaning
+- Data summary standard summary stats analysis
+- Scatterplots of county or regional data
+- Geospatial analysis of patient distrubution
+  + Trauma center service area in releationship to other centers
+  + Individual data points with noise 
+  + 2d density 
+
+- Linear modeling for LOS 
+  + With or without mortality
+  + sub-grouped based upon standardized ISS catagories
+  + Predicitive within historically established model
+  + Can be used for Quality improvement for patients with longer LOS
+    than expected.
+
+- ARIMA
+  + Modeling without sesonal correction.
+  + Deconvolution of ARIMA data with sesonal effects
+  + auto.arima() and prediction functions to look at expectation for
+    patient numbers on a time sereis.
+
+- Catagorization Modeling
+  + Basic random forest model looking for morbidity/mortality
+    catagorization.
+  + Basic PCA looking a factor reduction in complex datasets
+  + Later look at adding neural network model looking at
+    procedures/timing of procedures as indicator of outcomes. (One ref
+    on RNN (?) on diagnosis codes).
+
+
+    
+
+    
+
+
+
