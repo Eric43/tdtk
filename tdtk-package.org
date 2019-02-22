@@ -5,7 +5,7 @@ the trauma director tool kit (TDTK) into a basic org document for
 later reference. The initial minimimal viable product release is done
 with minimal functions designed for basic cleaniing and data
 analysis. The main package and R files are located on a GitHub
-repository:  (https://github.com/Eric43/tdtk .  These function can be
+repository:  (https://github.com/Eric43/tdtk.  These function can be
 used alone or in conjunction with tdtk markdown and example R files to
 help with patient analysis.  The funcitons currently comprize of:
 
@@ -64,9 +64,112 @@ currently sections are defined as:
     procedures/timing of procedures as indicator of outcomes. (One ref
     on RNN (?) on diagnosis codes).
 
+* Project needs/TODO list
+
+** tdtk-package
+
+This is the section of the todo lists on the tdtk-package.  This will
+be used for tracking needs and what id done.
+
+*** GitHub
+    The GitHub tdtk public repo has been created and the functions have
+    been "cleaned" of identifying/specific varible name calls
+    (i.e. general calls of "patient_data" versus "<hospital name>_data".
+
+**** TODO [#A] load and create the package using the package subdir.
+     The goal of this is to have a seperate working package diretory
+     in GitHub so that the subdir = "package" using the install_github
+     in devtools. Done in Jan 2019 and then pulled/deleted because
+     didn't change all varible names (ewo).  Recreate repo and load ASAP.
+
+*** Functions
+
+**** DONE [#C] Finish spell checking core functions
+     This was done on 31Jan2019 for basic functions need to repeat on
+     the DESCRIPTION and other entries.
+
+**** DONE [#A] Seperate the read function into a less complicated mess
+     Did the basic seperation need to develop blind and other
+     ancillary functions
+
+**** TODO [#A] Finish the tdtk_blind function
+     This was included as part of the read_tdtk() and made it
+     difficult to use and higher probability of
+     errors/warnings/stops.  Therfore seperating the read and the
+     blind functions. 
+ 
+**** TODO [#A] Finish "compiling" the package 
+     Due to the fact the laptop is does not have enough freespace for
+     necessary devtools andsupporting programs the tdtk-package needs
+     to be completed on "Rainbow candycane" (not my first choice of
+     name).
+
+**** TODO [#B] Look at package req.
+     Finalize the necessary packages included determine minimum
+     necessary instead of library(tidyverse) try to do the necessary
+     subset of this library (i.e. instad of all of tidyverse for map
+     function just use purrr or if plotting just use ggmap2....etc. ad
+     nauseum).
+
+*** Documentation
+    The current tdtk-package is using roxygen2 package to generate the
+    manual/documentation etc. 
+
+**** TODO [#C] Read and edit the documentation
+     Once I finish with my edits send to sdm for a fresh set of eyes.
+     Plus he can deconvolute my wriitng.
+
+**** TODO [#C] Get the necessary references/cross-refs
+     The documentation usng roxygen2 need to add the necessary laTeX
+     references and link to the necessary 
+
+**** TODO [#C] Check on the DESCRIPTION file
+     Its either the desc or aother file but need to see if I'm
+     correctly referencing the necesary packages.  I was on the ggmap
+     GitHub site and didnt' have similar calls as they did for the
+     required libraries. 
+
+**** TODO [#C] See if I need to add a seperate .LICENSE file  
+     Using GPL-v3 for license.  I think that only the MIT licensed
+     needs to be added seperate and GitHub seems to have the GPLv3
+     text added to the tdtk repo.
+
+*** Data
+    The current dataset for tdtk is limited and not validiated.  This
+    needs to be changed to allow for testing and necessary background
+    for trauma professionals to use during data analysis.
+
+**** TODO [#A] ICD look uptable (CT)
+     Currently only using a set of unique ICD text descriptions based
+     upon a small sample size.  Need to full dataset.
+
+**** TODO [#A] Trauma Center data set (CT)
+     Collecting the national ACS and state trauma centers in a
+     standard .csv or .xls document to be included in the DATASET to
+     allow for testing and analysis by end users.
+
+**** DONE [#C] Testing .csv of WV and SE regions TC
+     Waiting for the necessary trauma center names etc was taking too
+     long so did quick sample of the ACS and some state datasets. WV
+     was used due to the fact its a full ACS state with level I
+     through III centers with enough eperation to help troublshoot the
+     circle functions.
+
+**** TODO Reference table upload(CT) 
+     Need to maintain the necessary references to aid in the
+     development and authorship of the tdtk.  Currently waiting on
+     anyform of reference manager (see references section).  Suggested
+     JabRef for cross platform but anything that can be exported into
+     similar or org.ref are needed.
+
+
+
+*** References
 
     
-
+**** TODO Get any and all references from clinical team
+     Need to get the references from the clinical team and use for
+     necessay references to the functions and papers.
     
 
 
