@@ -24,7 +24,7 @@ This is a basic devtool install and once the tdtk-package progress past prototyp
 
 # Project Organization
 
-The tdtk project is designed to be fully free and open devlopment in keeping with this mission, the directory structure is divided into three parts.  First, there is the package subdirectory.  In this subdir is the necessary componets to install the current development version of the tdtk-package.r.  Next there is the ./code director that contains the code used to generate the tdtk package.  Finally any note, org files etc will be maintqined in the tdtk main directory.  
+The tdtk project is designed to be fully free and open devlopment in keeping with this mission, the directory structure is divided into three parts.  First, there is the package subdirectory.  In this subdir is the necessary componets to install the current development version of the tdtk-package.r.  Next there is the ./source directory that contains the code used to generate the tdtk-package (with Roxygen2 document information).  
 
 # Project Goals
 
@@ -32,7 +32,10 @@ The goal of this project is to provide trauma directors with the necesary statis
 
 In addtion to the basic removal of PHI in the limited dataset (not intended for direct public use/viewing), ithe trauma director or apprpriatedly trained personell can blind age and zip to decrease potential risk or re-identificaiton to very low.  This blining option can bin ages, zip codes (removal of last 2 or full removal) or both(recommended for non-professionals).  To prevent further patient ID, the geocoded plots include random noise or will use mathmatical modeling via 2d statistical density models that minimize potential patient identification.
 
+In conclusion, the tdtk-package is designed to be used by anyone in the medical profession that needs: basic summary statistics, scatter plots, geospatial modeling, ARIMA/timeseries modeling and others.  It is hoped that as/if this project is utilized that it can aid all medical professionals accross the globe independant of the resources availible to the practicioner.  When combined with free Electronic Health Record (EHR) systems like LibreHealth that multi-instutional, multi/transcultural blinded database. This database can be used for a range of advanced projects like machine-learning/AI models that once developed have no need for propritary software/hardware. To quote Bob Dylan "I'll let you be in my dreams if I can be in yours"
 
+
+# References
 
 
 
