@@ -28,4 +28,11 @@ The tdtk project is designed to be fully free and open devlopment in keeping wit
 
 # Project Goals
 
-The goal of this project is to provide trauma directors with the necesary statistical/mathematical models to analyze trauma patient data that has a basic Protected Health Informtion (PHI) removed but may still have a greather than very-low probability of patient ID.  In addtion to only the basic removal HIPAA proteted research done by the trauma director (that is not meant for public use), several function have added data blinding option.  This blining option can bin ages, zip codes (removal of last 2 or full removal) or both.  To prevent further patient ID, the geocoded plots include random noise to prevent geo-location identificatino.  Togheeter these tools can be used to fully inv
+The goal of this project is to provide trauma directors with the necesary statistical/mathematical models to analyze trauma patient data that has a basic Protected Health Informtion (PHI) removed but may still have a greather than very-low probability of patient ID (limited dataset).  With the limited dataset, a trauma director or apprpriate medical proffessional can generate necessary reports/figures.  
+
+In addtion to the basic removal of PHI in the limited dataset (not intended for direct public use/viewing), ithe trauma director or apprpriatedly trained personell can blind age and zip to decrease potential risk or re-identificaiton to very low.  This blining option can bin ages, zip codes (removal of last 2 or full removal) or both(recommended for non-professionals).  To prevent further patient ID, the geocoded plots include random noise or will use mathmatical modeling via 2d statistical density models that minimize potential patient identification.
+
+
+
+
+
