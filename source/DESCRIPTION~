@@ -1,0 +1,25 @@
+Package: tdtk
+Title: Trauma Directors Tool Kit (tdtk)
+Version: 0.2.0.2019
+Authors@R: 
+    person(given = "Eric",
+           family = "Olle",
+           role = c("aut", "cre"),
+           email = "eric.olle@gmail.com")
+Description: This package is a collection of functions for the analysis of
+trauma patient data currently from excel or csv but potential for EHR SQL
+interaction is possible in future versions.  This initial set of functions are
+meant to form a basic framework to analyze patient data that is cleaned of
+direct identifiers and be used for physician to analyze.  In addition, certain
+functions are designed to add blinding characters to zip code or set age bins
+broad to allow for public distribution and removal of ancillary identifying
+information.  0.1.x.. was used as alpha development in R for figure and Rmd
+file generation.  The necessary functions for cleaning, extracting, displaying
+the data and circle on maps were checked for functionality on R 3.5.2 and
+combined to make version 0.2.0.2019 (major.minor.sub.year).  Version 0.2.0.2019
+is a minimal viable product for initial use with markdown files.  When fully
+developed (i.e all necessary functions for DRY (Don''t Repeat Yourself) version
+1.0 will be released.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
