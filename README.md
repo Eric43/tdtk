@@ -17,7 +17,7 @@ To install the tdtk package use the devtools install_github() using the "package
 
 ```{r}
 library(devtools)
-install_github("Eric/43/tdtk", subdir = "package")
+install_github("Eric43/tdtk", subdir = "package")
 ```
 
 This is a basic devtool install and once the tdtk-package progress past prototype and into full version the goal is to move a stable version to CRAN and deveolpers version on Github or equivelent.  
