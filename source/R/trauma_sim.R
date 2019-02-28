@@ -22,7 +22,7 @@
 trauma_sim <- function(n_size = 2000,
                        p_trauma = ..., # a look up table of trauma P's
                        rej_sample = FALSE,
-                       sim_type = "pat")
+                       sim_type = "pt")
 {
                                         # Start with p_trauma table and guesstimate
 
