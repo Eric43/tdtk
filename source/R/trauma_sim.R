@@ -22,12 +22,25 @@
 trauma_sim <- function(n_size = 2000,
                        p_trauma = ..., # a look up table of trauma P's
                        rej_sample = FALSE,
-                       sim_type = "pat")
+                       sim_type = "pt",
+                       lon = ...,
+                       lat = ...) # pt = patient
 {
+
+library(dplyr) # for case when
+
                                         # Start with p_trauma table and guesstimate
 
+    p_guess <- c("Mild" = 0.4,
+                 "Mod" = 0.3,
+                 "sev" = 0.2,
+                 "prof" = 0.1) 
+        
 
 
+
+                                        # Main #
+    
     
 
 }
