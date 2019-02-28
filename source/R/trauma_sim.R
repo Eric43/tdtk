@@ -22,9 +22,13 @@
 trauma_sim <- function(n_size = 2000,
                        p_trauma = ..., # a look up table of trauma P's
                        rej_sample = FALSE,
+<<<<<<< HEAD
                        sim_type = "pt",
                        lon = ...,
                        lat = ...) # pt = patient
+=======
+                       sim_type = "pt")
+>>>>>>> 2a71c7fbd531a6aa74fa75ff756f09d778662ac7
 {
 
 library(dplyr) # for case when
