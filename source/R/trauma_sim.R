@@ -22,13 +22,13 @@
 trauma_sim <- function(n_size = 2000,
                        p_trauma = ..., # a look up table of trauma P's
                        rej_sample = FALSE,
-<<<<<<< HEAD
+
                        sim_type = "pt",
                        lon = ...,
-                       lat = ...) # pt = patient
-=======
+                       lat = ...,
+                       map_attrb = ..., 
                        sim_type = "pt")
->>>>>>> 2a71c7fbd531a6aa74fa75ff756f09d778662ac7
+
 {
 
 library(dplyr) # for case when
@@ -40,11 +40,15 @@ library(dplyr) # for case when
                  "sev" = 0.2,
                  "prof" = 0.1) 
         
-
+          
 
 
                                         # Main #
+    ## do a basic sampling assuming lon, lat is center
+    ## and that Mild/mod have lower P as further away
+    ## sev and prof are uniform (but shoulb be norm'd
+    ## to population density.
     
-    
+
 
 }
