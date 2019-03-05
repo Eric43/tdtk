@@ -1,0 +1,83 @@
+* Reports directory
+
+This directory is specifically designed for reports that use a
+markdown, r-markdown, book-down or any type of format usable by many.
+Initially this directory will be comprised of basic markdown using R
+for the generation of on trauma patients.  However, with minimal
+changes to the code or the ICD lookup tables, these functions could be
+used by any medical professional.
+
+* Inertial reports/sections
+
+The reports will concentrate on trauma and broken down into the
+following sections:
+
+
+** Write the R markdown documents
+
+*** TODO Chap. 1 Background etc.
+
+This chapter will be used to familiarize with the basic of this
+packages of functions and markdown file.  While the markdown file can
+be used to generate reports at specified intervals, they can also be
+used as a basis for further data analytic/modeling.  The use of EHR
+data in machine learning may provide insights and allow for "unicorn",
+or very rare, positive patient outcomes.  
+
+Most trauma programs in the United States are required to maintain a
+patient registry.  In addition, this data or a subset thereof is often
+submitted to the National Trauma Data Base (NTDB) that is used for
+national bench-marking of centers against large cohorts.  State and
+local trauma registry data contains a range of information that can
+be mined and mathematically modeled to maximize patient outcome while
+attempting to minimize pre-hospital risk factors.
+
+The use of already existing data collection points with minimal
+extra-steps to make HIPAA compliant.  This cleaned or "tidy" data is
+quickly ready for analysis is a starting point to impact the
+disease(s) of traumatic injuries.
+
+*** TODO Section 2 Loading the data
+
+The goal of this chapter is to get the data obtained from EHR or
+trauma registry into the R program for analysis.  First part will
+include figuring out how the file was exported.  If it was exported as
+a spreadsheet document the *.xls is the instructions you should
+follow.  If the data was exported as comma separated values
+(i.e. *.csv) then use this section.  
+
+Making sure the data is loaded correctly and then cleaned for analysis
+are the first steps to performing basic analysis.
+
+
+**** TODO Loading data from trauma registry from *.xls
+
+This is basic load command depending on the type of file provided and
+the column names
+
+**** TODO Loading data from trauma registry from *.csv
+
+**** TODO Loading data from EHR from *.xls
+
+**** TODO Loading data from EHR from *.csv
+
+*** TODO Section 3 Looking at the data, basic summary tables and analysis
+
+*** TODO Section 4 Basic graphic plotting YT the data
+
+*** TODO Section 5 Geo-spatial analysis
+
+*** TODO Section 6 Machine learning etc.
+
+**** TODO Convert the LM 
+
+     Convert the linear model from simplistic to by trauma group.
+
+**** TODO ARIMA time series subsection
+
+     Convert the current notebook code to a functional markdown
+     document.
+
+*** TODO Section 7 Pediatric Analysis
+
+*** TODO Section 8 Burn Center  
