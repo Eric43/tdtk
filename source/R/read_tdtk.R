@@ -33,7 +33,7 @@
 #'
 #' @export
 
-read_tdtk  <- function(file_name = ...,
+read_tdtk  <- function(file_name = NA,
                        file_type = "csv",
                        save_file = FALSE,
                        blind = NA,

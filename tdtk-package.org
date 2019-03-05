@@ -1,22 +1,22 @@
 * Trauma director tool kit 
 
-The goal of this org documant is to put the initial public release of
+The goal of this org document is to put the initial public release of
 the trauma director tool kit (TDTK) into a basic org document for
-later reference. The initial minimimal viable product release is done
-with minimal functions designed for basic cleaniing and data
+later reference. The initial minimal viable product release is done
+with minimal functions designed for basic cleaning and data
 analysis. The main package and R files are located on a GitHub
 repository:  (https://github.com/Eric43/tdtk.  These function can be
 used alone or in conjunction with tdtk markdown and example R files to
-help with patient analysis.  The funcitons currently comprize of:
+help with patient analysis.  The functions currently comprise of:
 
 
 -  age_cat() DONE
--  blind_tdtk() TODO was part of read_tdtk but seperating for ease of
+-  blind_tdtk() TODO was part of read_tdtk but separating for ease of
    use.
 -  ctr2cir() DONE
 -  center2circle() DONE
 -  disp_cat() DONE (basic) Dispensation cats derived from limited subset
-- icd_cat() DONE (basic) ICD catagory based on text needs updating 
+- icd_cat() DONE (basic) ICD categories based on text needs updating 
 - iss_cat() DONE Used standard referenced ISS bins
 - read_tdtk() DONE in testing for xls or csv.  Added xls
    functionality.
@@ -28,38 +28,38 @@ help with patient analysis.  The funcitons currently comprize of:
 
 
 
-In addition to the tdtk-package a colletion of R functions, there are
-markdown/R-markdown and later bookdown files for the development of
+In addition to the tdtk-package a collection of R functions, there are
+markdown/R-markdown and later book down files for the development of
 individualized dynamic documents (Refs).  The initial goal of the
-markdown files is to provide a basic context to analyzie trauma
+markdown files is to provide a basic context to analyze trauma
 patient data.  These data analysis are broken into sections/chapters
 currently sections are defined as:
 
 - Data loading/cleaning
 - Data summary standard summary stats analysis
-- Scatterplots of county or regional data
-- Geospatial analysis of patient distrubution
-  + Trauma center service area in releationship to other centers
+- Scatter plots of county or regional data
+- Geo-spatial analysis of patient distribution
+  + Trauma center service area in relationships to other centers
   + Individual data points with noise 
   + 2d density 
 
 - Linear modeling for LOS 
   + With or without mortality
-  + sub-grouped based upon standardized ISS catagories
-  + Predicitive within historically established model
+  + sub-grouped based upon standardized ISS categorizes
+  + Predictive within historically established model
   + Can be used for Quality improvement for patients with longer LOS
     than expected.
 
 - ARIMA
-  + Modeling without sesonal correction.
-  + Deconvolution of ARIMA data with sesonal effects
+  + Modeling without seasonal correction.
+  + Convolution of ARIMA data with seasonal effects
   + auto.arima() and prediction functions to look at expectation for
-    patient numbers on a time sereis.
+    patient numbers on a time series.
 
-- Catagorization Modeling
+- Categorization Modeling
   + Basic random forest model looking for morbidity/mortality
-    catagorization.
-  + Basic PCA looking a factor reduction in complex datasets
+    categorization.
+  + Basic PCA looking a factor reduction in complex data sets
   + Later look at adding neural network model looking at
     procedures/timing of procedures as indicator of outcomes. (One ref
     on RNN (?) on diagnosis codes).
@@ -73,14 +73,14 @@ be used for tracking needs and what id done.
 
 *** GitHub
     The GitHub tdtk public repo has been created and the functions have
-    been "cleaned" of identifying/specific varible name calls
+    been "cleaned" of identifying/specific variable name calls
     (i.e. general calls of "patient_data" versus "<hospital name>_data".
 
 **** TODO [#A] load and create the package using the package subdir.
-     The goal of this is to have a seperate working package diretory
-     in GitHub so that the subdir = "package" using the install_github
+     The goal of this is to have a separate working package directory
+     in GitHub so that the subdir = "package" using the install_GitHub
      in devtools. Done in Jan 2019 and then pulled/deleted because
-     didn't change all varible names (ewo).  Recreate repo and load ASAP.
+     didn't change all variable names (ewo).  Recreate repo and load ASAP.
 
 *** Functions
 
@@ -88,23 +88,23 @@ be used for tracking needs and what id done.
      This was done on 31Jan2019 for basic functions need to repeat on
      the DESCRIPTION and other entries.
 
-**** DONE [#A] Seperate the read function into a less complicated mess
-     Did the basic seperation need to develop blind and other
+**** DONE [#A] Separate the read function into a less complicated mess
+     Did the basic separation need to develop blind and other
      ancillary functions
 
-**** TODO [#A] Finish the tdtk_blind function
+**** DONE [#A] Finish the tdtk_blind function
      This was included as part of the read_tdtk() and made it
      difficult to use and higher probability of
-     errors/warnings/stops.  Therfore seperating the read and the
+     errors/warnings/stops.  Therefore separating the read and the
      blind functions. 
  
-**** TODO [#A] Finish "compiling" the package 
-     Due to the fact the laptop is does not have enough freespace for
+**** DONE [#A] Finish "compiling" the package 
+     Due to the fact the laptop is does not have enough free space for
      necessary devtools andsupporting programs the tdtk-package needs
      to be completed on "Rainbow candycane" (not my first choice of
      name).
 
-**** TODO [#B] Look at package req.
+**** DONE [#B] Look at package req.
      Finalize the necessary packages included determine minimum
      necessary instead of library(tidyverse) try to do the necessary
      subset of this library (i.e. instad of all of tidyverse for map
@@ -115,7 +115,7 @@ be used for tracking needs and what id done.
     The current tdtk-package is using roxygen2 package to generate the
     manual/documentation etc. 
 
-**** TODO [#C] Read and edit the documentation
+**** DONE [#C] Read and edit the documentation
      Once I finish with my edits send to sdm for a fresh set of eyes.
      Plus he can deconvolute my wriitng.
 
@@ -123,16 +123,17 @@ be used for tracking needs and what id done.
      The documentation usng roxygen2 need to add the necessary laTeX
      references and link to the necessary 
 
-**** TODO [#C] Check on the DESCRIPTION file
+**** DONE [#C] Check on the DESCRIPTION file
      Its either the desc or aother file but need to see if I'm
      correctly referencing the necesary packages.  I was on the ggmap
      GitHub site and didnt' have similar calls as they did for the
      required libraries. 
 
-**** TODO [#C] See if I need to add a seperate .LICENSE file  
+**** DONE [#C] See if I need to add a seperate .LICENSE file  
      Using GPL-v3 for license.  I think that only the MIT licensed
      needs to be added seperate and GitHub seems to have the GPLv3
      text added to the tdtk repo.
+
 
 *** Data
     The current dataset for tdtk is limited and not validiated.  This
@@ -163,10 +164,20 @@ be used for tracking needs and what id done.
      similar or org.ref are needed.
 
 
+**** TODO Design a function to fully randomize ezisting data
+There needs to be a way to further de-identify data to allow for use
+as a training set.  Best option is to randomize column data and then
+fully randomized the rows.
 
 *** References
 
-    
+**** TODO Complete the R references    
+Need to get the entire list of R librarys used. This could not be done
+without the Core team, Hadley Wickham and a ton of others
+(G. Groleomond, GGMAP author, Xi (?) bookdown and others)
+
+**** TODO Complete background non-clinical references
+
 **** TODO Get any and all references from clinical team
      Need to get the references from the clinical team and use for
      necessay references to the functions and papers.
