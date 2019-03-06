@@ -32,6 +32,19 @@ This is a basic devtool install and once the tdtk-package progress past prototyp
 
 The tdtk project is designed to be fully free and open development in keeping with this mission, the directory structure is divided into three parts.  First, there is the package sub-directory.  In this subdir is the necessary components to install the current development version of the tdtk-package.r.  Next there is the ./source directory that contains the code used to generate the tdtk-package (with Roxygen2 document information).  
 
+## Directory Structure
+
+In the main directory there should be several sub-directories containing the information necessary for the tdtk.  In addition, there should be the LICENSE, README.md and other files in this directory.
+
+
+### package
+Contains the most up-to-date build of the package.  It may not be up to date with the code in the source directory.
+### reports
+Contains the markdown or similar files for generation of trauma reports from patient data.
+### source
+Contains the exact code/R files used to build the package.  
+
+
 # Project Goals
 
 The goal of this project is to provide trauma directors with the necessary statistical/mathematical models to analyze trauma patient data that has a basic Protected Health Information (PHI) removed but may still have a greater than very-low probability of patient ID (limited data set).  With the limited data set, a trauma director or appropriate medical professional can generate necessary reports/figures.  
