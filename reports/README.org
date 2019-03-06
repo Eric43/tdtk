@@ -7,7 +7,7 @@ for the generation of on trauma patients.  However, with minimal
 changes to the code or the ICD lookup tables, these functions could be
 used by any medical professional.
 
-* Inertial reports/sections
+* Initial reports/sections
 
 The reports will concentrate on trauma and broken down into the
 following sections:
