@@ -15,7 +15,7 @@ following sections:
 
 ** Write the R markdown documents
 
-*** TODO Chap. 1 Background etc.
+*** TODO Section 1 Background etc.
 
 This chapter will be used to familiarize with the basic of this
 packages of functions and markdown file.  While the markdown file can
