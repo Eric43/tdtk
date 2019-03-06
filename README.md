@@ -1,10 +1,12 @@
 # Trauma Director Tool Kit (tdtk)
 Trauma director tool kit repository
 
-## Special Thanks to all contributors:
+## __Special thanks to all contributors__
 
 ### Clinical Team/Initial Development
-Dr. Tiffany Lasky, Dr. Sarah Robison
+
+-  Dr. Tiffany Lasky
+-  Dr. Sarah Robison
 
 # Description
 The trauma director tool kit is a collection of files and packages designed to allow trauma professionals to analyze, blind and graphically display pertinent clinical information.  Where possible the ACS care of the critically injured patient criteria are used:
