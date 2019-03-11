@@ -9,15 +9,15 @@ repository:  (https://github.com/Eric43/tdtk.  These function can be
 used alone or in conjunction with tdtk markdown and example R files to
 help with patient analysis.  The functions currently comprise of:
 
-* Overall design justificaiton for R based trauma patiant data analysis
+* Overall design justification for R based trauma patient data analysis
 
-The goal of this document is to look at the main resons for
+The goal of this document is to look at the main reasons for
 development of the trauma director tool kit (tdtk)
 (https://github.com/Eric43/tdtk)
 
 * Reasons for development
 
-From ACS orage book (primary resource for trauma directors):
+From ACS Orange book (primary resource for trauma directors):
 
 #+BEGIN_QUOTE
 "A trauma registry can be valuable only if the data it contains can
@@ -38,27 +38,27 @@ statistical program." (ACS orange book chapter 15)
 
 Currently there are basic National Trauma Database (NTB) and Trauma
 Quality Improvement Process (?) (TQUIP) summary analysis that allow
-for basic benchmarking.  This can provide trauma surgeons (defined as:
-Adavanced ractice Surgeons with added creditials in Trauma and/or
-Critical Care), with a broad overview of thier trauma practice.
+for basic bench marking.  This can provide trauma surgeons (defined as:
+Advanced practice Surgeons with added credentials in Trauma and/or
+Critical Care), with a broad overview of their trauma practice.
 However, the use of large data sets and national/international
-benchmarking is ont without problems.  First, thic can lead to know
+bench marking is not without problems.  First, this can lead to know
 statistical effect such as Simpson's paradox (Yule-Simpson effect).
-Next, whlle very useful for maco-patientomics disease analysis large
-benchmarking may obscure local/micro-patientomics disease patterns.
-Finally, there is a need for a rapidly customizable way for trauma
-doctors to analyze their patient data in a customizable and insightful
-way.  Therefore, the use of R (a GNU licensed statsitical
+Next, while very useful for macro-patientomics disease analysis large
+bench marking may obscure local/micro-patientomics disease patterns.
+Finally, there is a need for a rapidly customized way for trauma
+doctors to analyze their patient data in a customize and insightful
+way.  Therefore, the use of R (a GNU licensed statistical
 "programming" software) along with tdtk-package and markdown reports
 form the basis of the tdtk ecosystem.
 
-** Need for non-standard statisitcal analysis
+** Need for non-standard statistical analysis
 
-As machine learning/artificial intellegence (ML/AI) increase in usage
+As machine learning/artificial intelligence (ML/AI) increase in usage
 it seems necessary that these models be applied to the disease of
 trauma.  Some of the current non-standard summary statistical models
 include (but are only limited by imagination):  linear modeling LOS to
-ISS, Multi-group LM of LOS v ISS, muti-variate  analysis using linear
+ISS, Multi-group LM of LOS v ISS, multi-variate  analysis using linear
 modeling for better estimation of resources needed to care for the
 critically injured patient.  
 
@@ -71,13 +71,15 @@ critically injured patient.
 ** Need for common use statistical analysis platform for trauma directors
 
 Looking at both federal, state and local trauma reports there is a
-range of different analysis along with a range of differnt software
-packages such as: Mathematical, SAS, SPSS, MatLab etc.  While each one is an
-incredible program in thier own right, there is are the monetary and
-learning barrier of these systems.  Additionally, most (if not all) of
-the EHR/EMR systems have basic SQL (or eq.) report generation
-abilities.  All of these options provide a need for a free trauma
-specific statistical analysis software.  
+range of different analysis along with a range of different software
+packages.  While each one of these statistical packages is an
+incredible program there is cost of entry, cost to write specific
+programs for the proprietary software and learning curve for each
+of these systems.  Additionally, most (if not all) of the EHR/EMR
+systems have basic SQL (or eq.) report generation abilities.  All of
+these options provide a need for a free trauma specific statistical
+analysis software that can interface either directly or via a file.
+
 
 * Functions Overview
 
