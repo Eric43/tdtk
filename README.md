@@ -23,8 +23,34 @@ The tdtk is not designed to supplant ACS' excellent work with NTDB or Quality Im
 
 To install the tdtk package use the devtools install_github() using the "package" directory for subdir.  For example:
 
+The following example is using Pop!_OS a derivative of Unbuntu but similar steps are involved for all OS's.
+
+First, download the source file:
+
+https://github.com/Eric43/tdtk/tree/master/package
+
+Next, determine where the package is located and then install in R (direct, ESS or R-studio methods) using:
+
+
 ```{r}
+install.packages(path_to_file, repos = NULL, type="source")
+
+```
+I downloaded tdtk-package version 0.2.0.2019 into the "Downloads" folder therefore:
+
+```{r}
+ install.packages("~/Downloads/tdtk_0.2.0.2019.tar.gz", repos = NULL, type="source")
+```
+
+## OR
+
+
+```{r}
+# Currently getting 404 error but direct link works
+# On the fix list.
+
 library(devtools)
+
 install_github("Eric43/tdtk", subdir = "package")
 ```
 
