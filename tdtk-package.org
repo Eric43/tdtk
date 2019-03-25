@@ -9,7 +9,7 @@ repository:  (https://github.com/Eric43/tdtk.  These function can be
 used alone or in conjunction with tdtk markdown and example R files to
 help with patient analysis.  The functions currently comprise of:
 
-<<<<<<< HEAD
+
 * Overall design justification for R based trauma patient data analysis
 
 The goal of this document is to look at the main reasons for
@@ -193,7 +193,7 @@ be used for tracking needs and what id done.
     been "cleaned" of identifying/specific variable name calls
     (i.e. general calls of "patient_data" versus "<hospital name>_data".
 
-**** TODO [#A] load and create the package using the package subdir.
+**** DONE [#A] load and create the package using the package subdir.
      The goal of this is to have a separate working package directory
      in GitHub so that the subdir = "package" using the install_GitHub
      in devtools. Done in Jan 2019 and then pulled/deleted because
