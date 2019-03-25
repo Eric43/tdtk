@@ -21,7 +21,6 @@ The tdtk is not designed to supplant ACS' excellent work with NTDB or Quality Im
 
 # Installation
 
-To install the tdtk package use the devtools install_github() using the "package" directory for subdir.  For example:
 
 The following example is using Pop!_OS a derivative of Unbuntu but similar steps are involved for all OS's.
 
@@ -43,6 +42,8 @@ I downloaded tdtk-package version 0.2.0.2019 into the "Downloads" folder therefo
 ```
 
 ## OR
+
+To install the tdtk package use the devtools install_github() using the "package" directory for subdir.  For example:
 
 
 ```{r}
