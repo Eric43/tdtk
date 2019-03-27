@@ -13,31 +13,70 @@
 #' time of 1 hr usign a 45 m radius circle.
 #'
 #' @param data_set is a single or collection geo_ids (i.e. zip code r
-#'     town name) to allow for geocode
-#'
-#' 
-#' @param center_name longitude of center for tdtk the center would be
-#'     the final hospital (LV I or II for tertirary care)
+#'     town name) to allow for geocode.  Stick to naming convention
+#'     zip or name  still finalizing column names for data set.
+#' @param center_name name of the center for destination of the routh
+#' @param ctr_lon longitude of the center
+#' @param ctr_lat latitude of the center
+#' @param zip T/F on to use name (i.e. town or hopital) or zip code
 #'
 #' @export
 #'
 
 
 route2center <- function (data_set = ...,
-                          center_name = NA){
+                          center_name = NA,
+                          ctr_lon = ...,
+                          ctr_lat = ...,
+                          zip = FALSE){
     ## add a check for center name !(is.na)
     ## add a check for names
 
 
     library(ggmap) # for geocodeing
 
-    routes <- data.frame(name = data_set$name)
-    
-    routes <- mutate(route(from = routes$name,
-                           to = center_name,
-                           mode = "driving",
-                           structure = "route"))
+    ## giveing a dataset with column of $name
 
-    return(routes)
+    routes <- data.frame(...) ### just init blank data frome.
+
+    ## Trying to allow for different route interatoins
+    ## Using a hospital name center and then a from name
+    ## i.e. another hospital or nursing home with a name
+    ## Other option is to us a lon,lat for the hospital center
+    ## and then use zipcode as route start point.
+    ## next potential is to use from zip to center named
+    ## finally looing at lon,lat center with zip 
+    
+    
+    if (!(is.na(center_name) && !zip){
+        routes <- mutate(route(from = data_set$name,
+                               to = center_name,
+                               mode = "driving",
+                               structure = "route"))
+    }
+    else if (is.na(center_name && zip){
+        routes <- mutate(route(from = data_set$name,
+                               to = c("lon" = ctr_lon,
+                                      "lat" = ctr_lat),
+                               mode = "driving",
+                               structure = "route"))
+        
+    }
+    else if (is.na(ceter_name) && !zip){
+        routes <- mutate(route(from = c(data_set$lon,
+                                        data_set&lat),                         
+                               to = center_name,
+                               mode = "driving"
+                               structure = "route"))
+    }
+    else if (!is.na(center_name) && zip)
+        routes <- mutate(route(from = data_set$zip,
+                               to = center_name,
+                               mode = "driving",
+                               structure = "route"))
+    else (stop("not able to process the routes"))
+
+    return(routes)# a datafrom of routes to be plotted
+    
 }
 
