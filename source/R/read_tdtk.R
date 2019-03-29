@@ -149,13 +149,14 @@ colnames <- c("Age",
     if (random) {
         patient_data  <-  shuffle(patient_data)
     }
-    if (save_data){
-        if (!is.na(blind)){
-            save_blind(data = patient_data,
-                       file = save_file)
+    if (save_data && !(save_file)){
+        if (!is.na(blind)){#### Check save_vlind syntax)
+            saveRDS(patient_data,
+                    file = save_blind(data = patient_data,
+                                      file = save_file))
         }
         else {
-            save_tdtk(data = patient_data,
+            saveRDS(patient_data,
                       file = save_file)
         }
 
