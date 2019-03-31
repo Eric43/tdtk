@@ -29,13 +29,18 @@ library(ggmap)
 
 library(devtools)
 
-## Need to OAuth api for github
+## Need to OAuth the tdtk-package api for github
 
 install_github("Eric43/tdtk", subdir = "package")
 
 ```
 
 ## Loading the data
+
+Once the basic library's are installed the next step is to load the
+data.  Depending on how the data is loaded (i.e. using readr or
+tdtk_read()), the calls will be differnt.  However the overall goal is
+the same or to get the  data into a varible called "trauma data".
 
 
 ```{r, load data, echo=FALSE}
@@ -61,12 +66,14 @@ trauma_data <- read_csv("~/Desktop/Trauma Project Folder/TraumaPtsByZipCode.csv"
                         skip=1, #skip set to 1 to avoid column names in row 1
                         col_names = col.names) #set column names to above varible)
 
-#Removing the na's that are present in the arrival date and time.
-# peds.hvmc$Arr.Date.Time <-mdy_hm(peds.hvmc$Arr.Date.Time, tz = "EST")
-# peds.hvmc <- peds.hvmc %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
 
-#Check contents of the data
+### Removing the na's that are present in the arrival date and time.
 
+
+# trauma_data$Arr.Date.Time <-mdy_hm(trauma_data$Arr.Date.Time, tz = "EST")
+# trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
+
+head(trauma_data, n = 4)
 
 ```
 
