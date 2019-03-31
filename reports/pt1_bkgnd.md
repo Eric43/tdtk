@@ -29,6 +29,8 @@ library(ggmap)
 
 library(devtools)
 
+## Need to OAuth api for github
+
 install_github("Eric43/tdtk", subdir = "package")
 
 ```

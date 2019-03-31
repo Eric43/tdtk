@@ -13,21 +13,17 @@ help with patient analysis.  The functions currently comprise of:
 * Overall design justification for R based trauma patient data analysis
 
 The goal of this document is to look at the main reasons for
-=======
+
 * Overall design justificaiton for R based trauma patiant data analysis
 
 The goal of this document is to look at the main resons for
->>>>>>> bf9c6e7343d6d20b1068ab03e3cf083ac090a7fe
 development of the trauma director tool kit (tdtk)
 (https://github.com/Eric43/tdtk)
 
 * Reasons for development
 
-<<<<<<< HEAD
+
 From ACS Orange book (primary resource for trauma directors):
-=======
-From ACS orage book (primary resource for trauma directors):
->>>>>>> bf9c6e7343d6d20b1068ab03e3cf083ac090a7fe
 
 #+BEGIN_QUOTE
 "A trauma registry can be valuable only if the data it contains can
@@ -105,7 +101,7 @@ critically injured patient.
 ** Need for common use statistical analysis platform for trauma directors
 
 Looking at both federal, state and local trauma reports there is a
-<<<<<<< HEAD
+
 range of different analysis along with a range of different software
 packages.  While each one of these statistical packages is an
 incredible program there is cost of entry, cost to write specific
@@ -115,7 +111,7 @@ systems have basic SQL (or eq.) report generation abilities.  All of
 these options provide a need for a free trauma specific statistical
 analysis software that can interface either directly or via a file.
 
-=======
+
 range of different analysis along with a range of differnt software
 packages such as: Mathematical, SAS, SPSS, MatLab etc.  While each one is an
 incredible program in thier own right, there is are the monetary and
@@ -123,7 +119,7 @@ learning barrier of these systems.  Additionally, most (if not all) of
 the EHR/EMR systems have basic SQL (or eq.) report generation
 abilities.  All of these options provide a need for a free trauma
 specific statistical analysis software.  
->>>>>>> bf9c6e7343d6d20b1068ab03e3cf083ac090a7fe
+
 
 * Functions Overview
 
