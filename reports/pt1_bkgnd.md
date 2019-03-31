@@ -2,9 +2,15 @@
 title: "Part 1. Loading of Trauma Patient Data"
 author: "Name"
 date: "Date"
+
+
 output: html_document: default
 ---
 
+# Part I.  Overview of Trauma Director Tool Kit
+## tdtk-package
+
+	
 ## Markdown
 
 
@@ -21,9 +27,13 @@ library(tidyverse)
 library(lubridate)
 library(ggmap)
 
-#ibrary(tdtk)
+                                        #ibrary(tdtk)
 
 ```
+The above librarys are the basic part of starting the tdtk.  Several
+different packages within tidyverse are needed by the package as well
+as the reports.  The R-core is version 3.4.4 with ESS, EMACS.  The R
+packages used were: (REFS).
 
 ```{r, Loading tdtk-package, include = FALSE}
 
@@ -67,25 +77,45 @@ trauma_data <- read_csv("~/Desktop/Trauma Project Folder/TraumaPtsByZipCode.csv"
                         col_names = col.names) #set column names to above varible)
 
 
+head(trauma_data, n = 4)
+
+```
+The above should be showing the first four records of the
+"trauma_data" data frame.  This data frame contains the data necessary
+for a nearly coplete analysis by the medical professional but requres
+additional "cleaning" (i.e. in tidyvers "tidying") and potential
+blinding of the data.  At this point its good to decide what are:
+
+1.  Goals of the research
+	- Trauma director.
+	- Internal Report.
+	- Verivicatoin of PHI removal prior to data scientist use.
+	- Partial blinding for specific uses.
+	- Full blinding for very low probabilty of reidentification.
+2.  Final use of the data
+	- Summary statisics 
+	- Geo spatial
+	- Machine learning/
+	
+## Reading, cleaning and preparing the dataset.
+
+This section prepares that data set for analysis.  Several steps are
+involve including removing all records with NA's in essential fields.
+Next, the data fields are converted to the proper form (lubridate) 
+
+
+After loading the data, the data needs a few columns added to make
+later anaysis easier.  This can be done manually or part of a function
+if using standarized registary data.
+
+
+```{r, tidy of data}
+
 ### Removing the na's that are present in the arrival date and time.
 
 
 # trauma_data$Arr.Date.Time <-mdy_hm(trauma_data$Arr.Date.Time, tz = "EST")
 # trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
-
-head(trauma_data, n = 4)
-
-```
-
-
-## Reading, cleaning and preparing the dataset.
-
-This section loads the data.
-
-
-After loading the data, the data needs a few columns added to make later anaysis easier.
-
-```{r, tidy of data}
 
 
 #Adding ISS catagory
@@ -116,6 +146,10 @@ head(trauma.zip)
 
 ```
 
+
+
+
+	
 
 
 
