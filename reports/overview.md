@@ -62,7 +62,7 @@ keeping with python scripting and other OOP languages, the use of "."
 will be avoided in all naming conventions and replaced by underscore
 "_" or dash "-".
 
-In the load data section (bellow) Make sure to use to correct file
+In the load data section (below) Make sure to use to correct file
 path or an error will occur.  Check on the age group since some will
 export days or months for pediatric patients and will need to be
 converted to years.
@@ -132,6 +132,21 @@ and geo-spatial statistics.
 
 NOTE: Rewrite using pipes
 
+# Add to notes for R install and install.packages
+
+I kept getting total fail for zero sum or something like that in the R
+install.packages().  To get it to work I install the following as per
+the instructions during the failed package install.
+
+```{cmd}
+
+sudo apt install libcurl4-openssl-dev 
+
+sudo apt install libssl-dev 
+
+```
+
+Need to say somthing about the clean up and later use?
 
 ```{r, tidy of data}
 
