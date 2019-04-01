@@ -1,13 +1,13 @@
 ---
-title: "Part 1. Loading of Trauma Patient Data"
+title: "TDTK-package overview" 
 author: "Name"
 date: "Date"
-
-
 output: html_document: default
 ---
 
+
 # Part I.  Overview of Trauma Director Tool Kit
+
 ## tdtk-package
 
 	
@@ -20,20 +20,22 @@ more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 
 
-```{r, Librarys, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r, Librarys, include = FALSE, knitr::opts_chunk$set(echo = TRUE)}
 
 library(tidyverse)
 library(lubridate)
 library(ggmap)
+library(knitr) ## See if included in tidyverse
 
                                         #ibrary(tdtk)
 
 ```
+
 The above library's are the basic part of starting the tdtk.  Several
 different packages within tidyverse are needed by the package as well
 as the reports.  The R-core is version 3.4.4 with ESS, EMACS.  The R
 packages used were: (REFS).
+
 
 ```{r, Loading tdtk-package, include = FALSE}
 
@@ -52,16 +54,22 @@ data.  Depending on how the data is loaded (i.e. using readr or
 tdtk_read()), the calls will be differnt.  However the overall goal is
 the same or to get the  data into a varible called "trauma data".
 
+Some basic housekeeping.  The overall goal of this project is to
+follow standardize naming, therefore, column names will begin with a
+capitalized letter.  On the other hand, varibles, functions and
+constants will be all lower case (unless absolutely necessary).  In
+keeping with python scripting and other OOP languages, the use of "."
+will be avoided in all naming conventions and replaced by underscore
+"_" or dash "-".
+
+In the load data section (bellow) Make sure to use to correct file
+path or an error will occur.  Check on the age group since some will
+export days or months for pediatric patients and will need to be
+converted to years.
 
 ```{r, load data, echo=FALSE}
 
-#load data Note: path maybe different.  Lood actual data.  Note: Dont
-# forget to modify excel .csv so that <1 yr (in months or weeks) is
-# calculated as year (i.e. 1 wk old = 1/52 of a year and 6 months is
-# 6/12 = 0.5 yr)
-
-
-col.names <- c("Age", 
+col_names <- c("Age", 
                "ISS", 
                "ICD_10_txt", 
                "County", 
@@ -74,7 +82,7 @@ col.names <- c("Age",
 
 trauma_data <- read_csv("~/Desktop/Trauma Project Folder/TraumaPtsByZipCode.csv", 
                         skip=1, #skip set to 1 to avoid column names in row 1
-                        col_names = col.names) #set column names to above varible)
+                        col_names = col_names) #set column names to above varible)
 
 
 head(trauma_data, n = 4)
@@ -95,42 +103,52 @@ blinding of the data.  At this point its good to decide what are:
 2.  Final use of the data
 	- Summary statisics 
 	- Geo spatial
-	- Classical machine learning and neural network/advanced simulations
+	- Classical machine learning and neural network/advanced
+      simulations
+3.  Type of figures needed
+
+There is no need for extra use/data processing.  If you are not doing
+travel time analysis or neural network modeling, there is little need
+to attempt to model ever travel time and transfer.  However, if you
+are doing only the more advanced slightly 'lernt machine analysis the
+entire data set will have to be processed completly to minimize
+records with NA's or missing data fields (except where appropriate).
 	
 ## Reading, cleaning and preparing the data set.
 
-This section prepares that data set for analysis.  Several steps are
-involve including: removing all records with NA's in essential fields,
-
-ADD MORE.
-
-
-Next, the data fields are converted to the proper form (lubridate) and
-this will later be used for time series analysis using the forecast
-package (REF).  After the intial data cleaning or "tidying" in the
-tidyverse, the data is grouped and analyzed.
-
 After loading the data, the data needs a few columns added to make
 later anaysis easier.  This can be done manually or part of a function
-if using standarized registary data.
+if using standarized registary data.This section prepares that data
+set for analysis.  Several steps are involve including: (i) removing
+all records with NA's in essential fields, (ii) extracting/converting
+date information to allow for easier grouping, (iii)
+cleaning/converting of zip code to a numeric value, (iv)
+cleaning/converting age to years (i.e. days and months to years), (v)
+grouping by injury severity score (REF), (vi) catogorizing inital
+dispensation, (vii) grouping by ICD-10 description and finally (viii)
+merging with zip code data base for geocoding information.  This is
+the intial trauma data set post-tidying and ready for basic summary
+and geo-spatial statistics.
+
+NOTE: Rewrite using pipes
 
 
 ```{r, tidy of data}
 
-### Removing the na's that are present in the arrival date and time.
+#### Removing the na's that are present in the arrival date and time.
 
 
-# trauma_data$Arr.Date.Time <-mdy_hm(trauma_data$Arr.Date.Time, tz = "EST")
-# trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
+trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
 
 
-# REWRITE using %>% pipes
+trauma_data$Arr.Date.Time <-mdy_hm(trauma_data$Arr.Date.Time, tz = "EST")
 
-#Adding ISS catagory
+
+#### Adding ISS catagory
 
 trauma_data <- mutate(trauma_data, ISS_cat = map_chr(ISS, ISS.cat)) 
 
-#Extracting and adding Zip code from chr to numeric
+#### Extracting and adding Zip code from chr to numeric
 
 TraumaPtsByZipCode <- mutate(TraumaPtsByZipCode, Zip.num = as.numeric(map_chr(Zip, Zip.clean)))
 
@@ -141,15 +159,16 @@ TraumaPtsByZipCode <- mutate(TraumaPtsByZipCode, zip = extract_numeric(Zip.num))
 
 TraumaPtsByZipCode <- mutate(TraumaPtsByZipCode, ICD_10grp = map_chr(ICD_10_txt, ICD_10.cat)) 
 
-#Adding Dispensation based upon intial ER visit
+#### Adding Dispensation based upon intial ER visit
 
 TraumaPtsByZipCode <- mutate(TraumaPtsByZipCode, Initial_disp = map_chr(ER_Disp, Disp.cat))
 
-#Merging the geocodeded zipcode data
+#### Merging the geocodeded zipcode data
 
 trauma.zip <- merge(TraumaPtsByZipCode, zipcode, by='zip')
 
-#Visualizing the data set
+#### Visualizing the data set
+
 head(trauma_data, n = 4)
 
 ```
@@ -159,13 +178,14 @@ tdtk_read().  Although the use of this allow for the user to see how
 and what columns are modified. In the blinded versions, transmutate
 instead of mutate is used to replace the columns containing sensitive
 health information.   To read and clean the data in an easy
-way dirct tdtk call can be made.
+way dirct tdtk call can be made.  The blind is set to false and this
+call is meant for the medical professional that does not requie full
+blinded data.
 
 ```{r, tdtk read & clean function calls}
-# Direct call
 
 trauma_data <- read_tdtk(file = "<insert path and file name>",
-                         blind = FALSE, ## For medical professionals
+                         blind = FALSE,
                          clean = TRUE)
 
 head(trauma_data, n = 4)
@@ -176,6 +196,19 @@ head(trauma_data, n = 4)
 # Part 2. Summary Statistics
 
 ## Text/Column summary statistics
+
+### Summary by county
+
+```{r table sourted by county, mechanism and serverity}
+
+
+ISS_grp <- trauma.zip %>%
+              group_by(County, ICD_10grp, ISS_cat) %>%
+              summarise("N" = n(), "Avg.Age" = mean(Age), "Avg.ISS"=mean(ISS))%>%
+              arrange(desc(N))
+
+knitr::kable(ISS_grp, digits = 2)
+```
 
 
 ## Graphical summary statistcs
@@ -217,7 +250,9 @@ upper right and lower left corners of the OSM map call.
 ```{r, hospital geocoding with google, echo=FALSE}
 # Geocoding the Hospital
 
-HVMC <- geocode("Holston Valley Medical Center", source = "google")
+HVMC <- geocode("Holston Valley Medical Center", source = "osm")
+
+
 JCMC <- geocode("Johsnon City Medical Center", source="google")
 BRMC <- geocode("Bristol Regional Medical Center", source="google")
 
@@ -225,6 +260,12 @@ BRMC <- geocode("Bristol Regional Medical Center", source="google")
 ```
 
 ### Open Street Maps
+
+#NOTE: Need to write osm_bb() to calculate the bounding box from
+determining the hypotonuse as the radiuse for 45 deg and 235 deg and
+use geosphere destpoint to determine the lon, lat for upper right and
+bottom left bounding box.  Need to determine if it will be squeare or
+a certian ratio with landscape or portrait being selections.
 
 ```{r, hospital geocoding (?) with OSM}
 
@@ -367,15 +408,3 @@ HVMC_trauma +
 ```
 
 
-###Summary by county
-
-```{r table sourted by county, mechanism and serverity}
-
-
-ISS.grp <- trauma.zip %>%
-              group_by(County, ICD_10grp, ISS_cat) %>%
-              summarise("N" = n(), "Avg.Age" = mean(Age), "Avg.ISS"=mean(ISS))%>%
-              arrange(desc(N))
-
-knitr::kable(ISS.grp, digits = 2)
-```
