@@ -25,23 +25,20 @@ more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 library(tidyverse)
 library(lubridate)
 library(ggmap)
-library(knitr) ## See if included in tidyverse
-
-                                        #ibrary(tdtk)
+library(knitr) 
 
 ```
 
 The above library's are the basic part of starting the tdtk.  Several
-different packages within tidyverse are needed by the package as well
+different packages within tidy-verse are needed by the package as well
 as the reports.  The R-core is version 3.4.4 with ESS, EMACS.  The R
 packages used were: (REFS).
 
+#### Need to OAuth the tdtk-package api for github
 
 ```{r, Loading tdtk-package, include = FALSE}
 
 library(devtools)
-
-## Need to OAuth the tdtk-package api for github
 
 install_github("Eric43/tdtk", subdir = "package")
 
@@ -51,12 +48,12 @@ install_github("Eric43/tdtk", subdir = "package")
 
 Once the basic library's are installed the next step is to load the
 data.  Depending on how the data is loaded (i.e. using readr or
-tdtk_read()), the calls will be differnt.  However the overall goal is
-the same or to get the  data into a varible called "trauma data".
+tdtk_read()), the calls will be different.  However the overall goal is
+the same or to get the  data into a variable called "trauma data".
 
 Some basic housekeeping.  The overall goal of this project is to
 follow standardize naming, therefore, column names will begin with a
-capitalized letter.  On the other hand, varibles, functions and
+capitalized letter.  On the other hand, variables, functions and
 constants will be all lower case (unless absolutely necessary).  In
 keeping with python scripting and other OOP languages, the use of "."
 will be avoided in all naming conventions and replaced by underscore
@@ -65,7 +62,8 @@ will be avoided in all naming conventions and replaced by underscore
 In the load data section (below) Make sure to use to correct file
 path or an error will occur.  Check on the age group since some will
 export days or months for pediatric patients and will need to be
-converted to years.
+converted to years.  The second part of this code chunk is to filter
+out NA records to minimize extraneous minimally informative data.
 
 ```{r, load data, echo=FALSE}
 
@@ -85,23 +83,27 @@ trauma_data <- read_csv("~/Desktop/Trauma Project Folder/TraumaPtsByZipCode.csv"
                         col_names = col_names) #set column names to above varible)
 
 
+trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
+
 head(trauma_data, n = 4)
 
 ```
+
+
 The above should be showing the first four records of the
 "trauma_data" data frame.  This data frame contains the data necessary
-for a nearly coplete analysis by the medical professional but requres
+for a nearly complete analysis by the medical professional but requires
 additional "cleaning" (i.e. in tidyvers "tidying") and potential
 blinding of the data.  At this point its good to decide what are:
 
 1.  Goals of the research
 	- Trauma director.
 	- Internal Report.
-	- Verivicatoin of PHI removal prior to data scientist use.
+	- Verification of PHI removal prior to data scientist use.
 	- Partial blinding for specific uses.
-	- Full blinding for very low probabilty of reidentification.
+	- Full blinding for very low probability of re-identification.
 2.  Final use of the data
-	- Summary statisics 
+	- Summary statistics 
 	- Geo spatial
 	- Classical machine learning and neural network/advanced
       simulations
@@ -111,23 +113,23 @@ There is no need for extra use/data processing.  If you are not doing
 travel time analysis or neural network modeling, there is little need
 to attempt to model ever travel time and transfer.  However, if you
 are doing only the more advanced slightly 'lernt machine analysis the
-entire data set will have to be processed completly to minimize
+entire data set will have to be processed completely to minimize
 records with NA's or missing data fields (except where appropriate).
 	
 ## Reading, cleaning and preparing the data set.
 
 After loading the data, the data needs a few columns added to make
-later anaysis easier.  This can be done manually or part of a function
-if using standarized registary data.This section prepares that data
+later analysis easier.  This can be done manually or part of a function
+if using standardized registry data.This section prepares that data
 set for analysis.  Several steps are involve including: (i) removing
 all records with NA's in essential fields, (ii) extracting/converting
 date information to allow for easier grouping, (iii)
 cleaning/converting of zip code to a numeric value, (iv)
 cleaning/converting age to years (i.e. days and months to years), (v)
-grouping by injury severity score (REF), (vi) catogorizing inital
+grouping by injury severity score (REF), (vi) categorizing initial
 dispensation, (vii) grouping by ICD-10 description and finally (viii)
 merging with zip code data base for geocoding information.  This is
-the intial trauma data set post-tidying and ready for basic summary
+the initial trauma data set post-tidying and ready for basic summary
 and geo-spatial statistics.
 
 NOTE: Rewrite using pipes
@@ -139,6 +141,7 @@ install.packages().  To get it to work I install the following as per
 the instructions during the failed package install.
 
 ```{cmd}
+sudo apt install pandoc
 
 sudo apt install libcurl4-openssl-dev 
 
@@ -146,17 +149,31 @@ sudo apt install libssl-dev
 
 ```
 
-Need to say somthing about the clean up and later use?
+Need to say something about the clean up and later use? Some basic
+parameters needed to correctly process.  First the column names should
+conform to those generated from export. (ADD COLUMN NAMES)  Next, the
+time zone should be set in the time_zone variable. Currently time zone
+is EST.  You will also need to know how the date is formatted.  It is
+st to month, date, year, with hour and minute.  If needed to change it
+maybe easiest to set up a case when or if statement in the variables.
+This will be worked on for later iterations of tdtk-package.
 
-```{r, tidy of data}
+```{r, tidy of data - time zone}
 
 #### Removing the na's that are present in the arrival date and time.
 
+time_zone <- "EST"
 
-trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
+trauma_data$Arr.Date.Time <-mdy_hm(trauma_data$Arr.Date.Time, tz = time_zone)
+
+```
+
+After the time zone is set and the column structure is correctly
+converted to a date time the next step is to process the information
+for later analysis.
 
 
-trauma_data$Arr.Date.Time <-mdy_hm(trauma_data$Arr.Date.Time, tz = "EST")
+```{r, tidy of data - data set preperation}
 
 
 #### Adding ISS catagory
@@ -190,12 +207,14 @@ head(trauma_data, n = 4)
 
 The above code chunk shows how the data set is changed in the
 tdtk_read().  Although the use of this allow for the user to see how
-and what columns are modified. In the blinded versions, transmutate
+and what columns are modified. In the blinded versions, trans-mutate
 instead of mutate is used to replace the columns containing sensitive
 health information.   To read and clean the data in an easy
-way dirct tdtk call can be made.  The blind is set to false and this
-call is meant for the medical professional that does not requie full
+way direct tdtk call can be made.  The blind is set to false and this
+call is meant for the medical professional that does not require full
 blinded data.
+
+# NOTE: need to do correct call names may have changed
 
 ```{r, tdtk read & clean function calls}
 
@@ -212,6 +231,17 @@ head(trauma_data, n = 4)
 
 ## Text/Column summary statistics
 
+The goal of these statistics are to provide a basic text column
+summary statistics for a quick overview.  This should provide an
+overall summary of the patient population (i.e. Injury severity, age,
+Injury Mechanism) as either an average, median, IQR or whatever the
+medical professional chooses.  The use of averages can be skewed due
+to large.  An example of this can be seen in the linear modeling
+section.  A few patients with high injury scores (moralities) and low length of
+stay can leverage the model to an overall lower LOS.  This could lead
+to administrative decisions based on averages that may not be accurate
+for the living patients.
+
 ### Summary by county
 
 ```{r table sourted by county, mechanism and serverity}
@@ -226,7 +256,17 @@ knitr::kable(ISS_grp, digits = 2)
 ```
 
 
-## Graphical summary statistcs
+## Graphical summary statistics
+
+The goal of summary statistics is to quickly give the medical
+professional a summary of the data as well as the potential to look
+for areas that may differ from expert expectations.  This can be
+displayed as a text summary, standard bar graph or a summary scatter
+plot.  The goal of the county summary data plot is to provide the
+trauma doctor and injury prevention coordinator a rapid display of
+injury distributions across age and severity.  These are currently
+static plots but can be used to look for the correlating county in the
+data.  If useful for injury prevention, 
 
 ### Summary of county data
 
@@ -254,8 +294,8 @@ ggplot(ISS.grp, aes(x=Avg.Age, y=Avg.ISS, size=N, color= ICD_10grp))+
 ## Geocoding the hospital data
 
 Setting the google api is first as the easiest way to obtain a map
-with set zoom values.  If you do not have a google api registerd
-account, usoing google's api is not possible and an Open
+with set zoom values.  If you do not have a google api registered
+account, using google's api is not possible and an Open
 Source Map should be used.  This will require a bit more calculation
 using the osm_bb() (open street map bounding box) function to set the
 upper right and lower left corners of the OSM map call.
@@ -277,10 +317,10 @@ BRMC <- geocode("Bristol Regional Medical Center", source="google")
 ### Open Street Maps
 
 #NOTE: Need to write osm_bb() to calculate the bounding box from
-determining the hypotonuse as the radiuse for 45 deg and 235 deg and
+determining the hypotenuses as the radius for 45 deg and 235 deg and
 use geosphere destpoint to determine the lon, lat for upper right and
-bottom left bounding box.  Need to determine if it will be squeare or
-a certian ratio with landscape or portrait being selections.
+bottom left bounding box.  Need to determine if it will be square or
+a certain ratio with landscape or portrait being selections.
 
 ```{r, hospital geocoding (?) with OSM}
 
