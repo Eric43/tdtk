@@ -6,7 +6,7 @@ output: html_document: default
 ---
 
 
-# Part I.  Overview of Trauma Director Tool Kit
+# Overview of Trauma Director Tool Kit
 
 ## tdtk-package
 
@@ -41,6 +41,24 @@ packages used were: (REFS).
 library(devtools)
 
 install_github("Eric43/tdtk", subdir = "package")
+
+```
+
+## Setting constants
+
+Need to determine best way to load the census and google api's.
+Should be a way to set sys.env varibles so they can be used as needed
+withou hindering the user.
+
+```{r, setting constants for later use}
+
+time_zone <- "EST"
+
+centers_name <- "<inser name here>"
+center_address <- "<insert address here>"
+
+google_api <- "<insert proper address>"
+census_api <- "<insert path to file>"
 
 ```
 
@@ -115,7 +133,8 @@ to attempt to model ever travel time and transfer.  However, if you
 are doing only the more advanced slightly 'lernt machine analysis the
 entire data set will have to be processed completely to minimize
 records with NA's or missing data fields (except where appropriate).
-	
+
+
 ## Reading, cleaning and preparing the data set.
 
 After loading the data, the data needs a few columns added to make
@@ -159,10 +178,6 @@ maybe easiest to set up a case when or if statement in the variables.
 This will be worked on for later iterations of tdtk-package.
 
 ```{r, tidy of data - time zone}
-
-#### Removing the na's that are present in the arrival date and time.
-
-time_zone <- "EST"
 
 trauma_data$Arr.Date.Time <-mdy_hm(trauma_data$Arr.Date.Time, tz = time_zone)
 
