@@ -101,7 +101,6 @@ trauma_data <- read_csv("~/Desktop/Trauma Project Folder/TraumaPtsByZipCode.csv"
                         col_names = col_names) #set column names to above varible)
 
 
-trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
 
 head(trauma_data, n = 4)
 
