@@ -31,80 +31,35 @@ clean_tdtk <- function (data_set = ...,
 {
 ## May need to change the arr.date.time to Arr_date for consistiency
 
+    ## Check on the function calls
+    ## Check on the need for all to undego cleanind and not send all data
 
-    # Main 
+    
 
-    if (na_rm = TRUE){
+    if (na_rm = TRUE){## Removing the NA rows
         trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
     }
-
+    
+    ## Setting date time column to appropriate format
+    
     data_set$Arr.Date.Time <-mdy_hm(data_set$Arr.Date.Time, tz = time_zone)
 
-    if (blind(is.na)){
+    if (is.na(blind)){## If not blinded i.e. for med prof.
         data_set <- data_set %>%
             mutate(ISS_cat = map_chr(ISS, iss_cat)) %>%
             mutate(Zip_num = as.numeric(map_chr(Zip, zip_clean))) %>%
             mutate(ICD_10grp = map_chr(ICD_10_txt, icd_cat)) %>%
             mutate(Init_disp = map_chr(ER_Disp, disp_cat)) 
-                   
-            
-
-    trauma_data %>% case_when(is.na(blind)){
-
-        } 
+        
+    }
+    else { ## not mose efficient but easiest for differe usr grps.
+        data_set <- blind_tdtk(data_set = data_set, blind = blind)
+    } 
     
 
-        if (zip_geo){
-            
-            data_set <- merge(data_set, zipcode, by='zip')
-        }
-        
+    if (zip_geo){## Merging zip goe data maybe function it?
+        data_set <- merge(data_set, zipcode, by='zip')
+    }
 
-
-
-
-
-
-
-
-
-
-
-        
-
-case_when(is.na(blind)){
-    
-        
-
-
-case_when(blind = 
-
-    ISS catagory
-
-trauma_data <- mutate(trauma_data, ISS_cat = map_chr(ISS, ISS.cat)) 
-
-#### Extracting and adding Zip code from chr to numeric
-
-TraumaPtsByZipCode <- mutate(TraumaPtsByZipCode, Zip.num = as.numeric(map_chr(Zip, Zip.clean)))
-
-
-TraumaPtsByZipCode <- mutate(TraumaPtsByZipCode, zip = extract_numeric(Zip.num))
-
-#Adding ICD_10 grouping (Function need to be written for ICD 10 number too)
-
-TraumaPtsByZipCode <- mutate(TraumaPtsByZipCode, ICD_10grp = map_chr(ICD_10_txt, ICD_10.cat)) 
-
-#### Adding Dispensation based upon intial ER visit
-
-TraumaPtsByZipCode <- mutate(TraumaPtsByZipCode, Initial_disp = map_chr(ER_Disp, Disp.cat))
-
-#### Merging the geocodeded zipcode data
-
-
-#### Visualizing the data set
-
-head(trauma_data, n = 4)
-
-
+    return(data_set)
 }
-
