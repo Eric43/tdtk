@@ -33,7 +33,7 @@
 
 blind_tdtk <- function(data_set = ...,
                        blind = "both",
-                       zip_chr = "xx",
+                       blind_chr = "xx",
                        age_blind = "blind",
                        random = FALSE)
 {
