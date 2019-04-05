@@ -15,7 +15,9 @@
 #' @author Eric W. Olle, \email{eric.olle@@gmail.com}
 #' 
 #' @param data_set is the data set to be cleaned
-#' @param blind is the type of blinding for Age only, zip only or both
+#' @param blind is the type of blinding for Age only, zip only or
+#'     both.  Both setting will wipe age to three catagories (peds,
+#'     adul, geriatric) and blind last two of zip.  
 #' @param zip_chr is the characters or numbers used to blind.  Can be
 #'     from 1-5 char is length
 #' @param age_blind is the type of age blinding for ACS Adult, ACS
@@ -30,7 +32,7 @@
 
 
 blind_tdtk <- function(data_set = ...,
-                       blind = "all",
+                       blind = "both",
                        zip_chr = "xx",
                        age_blind = "blind",
                        random = FALSE)
