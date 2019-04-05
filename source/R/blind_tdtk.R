@@ -15,16 +15,43 @@
 #' @author Eric W. Olle, \email{eric.olle@@gmail.com}
 #' 
 #' @param data_set is the data set to be cleaned
-#' @param blind is NA for no blinding or type of blinding to be called
-#'     by blind_tdtk()
-#' @param time_zone is the time zone of data collecion to allow for
-#'     conversion of the date/time data to apprpriate type
-#' @param na_rm is set to T or F depending on if the data set needs
-#'     rows of NA's removed
-#' @param zip_geo is T/F on if to add the zip code geo-coding data
+#' @param blind is the type of blinding for Age only, zip only or both
+#' @param zip_chr is the characters or numbers used to blind.  Can be
+#'     from 1-5 char is length
+#' @param age_blind is the type of age blinding for ACS Adult, ACS
+#'     combo, pediatric and all
 #'
-#' @return a clean and possibly blinded data set
+#' @return a blinded data set should not be used unless blinding data
 #'
 #' @examples
 #'
 #' @export
+
+
+
+blind_tdtk <- function(data_set = ...,
+                       blind = "all",
+                       zip_chr = "xx",
+                       age_blind = "blind",
+                       random = FALSE)
+{
+    ## Goal of this function is to take a data set, remove potential PHI
+    ## and return a data frame that has been appropriately blindedd.
+
+    if (blind == "age"){
+        Case when ? (blind = XXX or XXX or XXX then call differently)
+        
+        data_set <- transmutate(data_set, Age = (age_clean( XXXXX ))) NOTE: type of blinding
+    }
+    else if (blind == "zip"){
+
+        data_set <- transmutate(data_set, Zip = zip_clean())
+            
+    }
+    else if (blind == "both"){
+        data_set <- data_set %>%
+            Blind_tdtk(type) %>%
+            zip_clean()
+    }
+
+    return(data_set)
