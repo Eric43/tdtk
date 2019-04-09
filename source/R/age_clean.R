@@ -10,18 +10,39 @@
 #'
 #' @author Eric W. Olle, \email{eric.olle@@gmail.com}
 #' 
-#' @param data_set is the data set to be cleaned
+#' @param data is the data to be cleaned
+#' @param conver_to is the unity of measure to convert to currently
+#'     only suuppors year.  For potential future use.
 #' 
-#' @return a blinded data set should not be used unless blinding data
+#' @return clean and coonverted age to years.
 #'
 #' @examples
 #'
+#' age_clean("11 mo")
+#'
+#' age_clean("36 d")
+#' 
 #' @export
 
 age_clean <- function (data = ...,
                        convert_to = "yr")
 {
+                                        # regex or strinr will work....
+    library(stringr)
+    
+    unit <- str_extract(data, pattern = "\\w{1,3}\\Z")
+        
+    age <- as.numeric(str_extract(data, pattern = "\\d{2,3}"))
+    
+    
+    ## Convert age to years based upon extracted unit
+    if (unit == "mo"){
+        age <- age/12
+    }
+    else if (unit == "d"){
+        age <- age/365
+    }
 
-data
+    return (age) 
 }
 
