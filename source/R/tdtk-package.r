@@ -38,6 +38,21 @@
 #'     this routh data can be used to overlay all the routes to
 #'     demonstrate major routes of travel for EMS to main hospital.
 #'
+#' @section age_clean: This functin is designed to clean and convert
+#'     ages that are reported as text with year have no unit, month
+#'     being mo and days being d and converting to agein in years.
+#'
+#' @section blind_tdtk: This function is designed to blind the data
+#'     set in multiple ways.
+#'
+#' @section trauma_sim: Basic function to take some patient records
+#'     and randomixe columns and other factors to make the data not
+#'     identifieable.  For examle it will always randomize the Age and
+#'     Zip columns, then will pick other columns and randomize and
+#'     then will randomize the records along the row/date axis so they
+#'     cannot be identified.  Thes is meant for training only and the
+#'     data will not be representative of actual data.
+#'
 #' @docType package
 #' @name tdtk
 NULL

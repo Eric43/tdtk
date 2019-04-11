@@ -44,15 +44,18 @@ clean_tdtk <- function (data_set = ...,
     
     data_set$Arr.Date.Time <-mdy_hm(data_set$Arr.Date.Time, tz = time_zone)
 
-    if (is.na(blind)){## If not blinded i.e. for med prof.
+    data_set <- data_set %>%
+        transmutate(Age = as.numeric(map_chr(Age, age_clean)))
+
+    if (is.na(blind) || !(blind)){## If not blinded assumse need for all data
         data_set <- data_set %>%
             mutate(ISS_cat = map_chr(ISS, iss_cat)) %>%
             mutate(Zip_num = as.numeric(map_chr(Zip, zip_clean))) %>%
             mutate(ICD_10grp = map_chr(ICD_10_txt, icd_cat)) %>%
-            mutate(Init_disp = map_chr(ER_Disp, disp_cat)) 
+            mutate(Init_disp = map_chr(ER_Disp, disp_cat)) %>%
         
     }
-    else { ## not mose efficient but easiest for differe usr grps.
+    else if (!is.na(blind) && blind){ ## not mose efficient but easiest for differe usr grps.
         data_set <- blind_tdtk(data_set = data_set, blind = blind)
     } 
     
