@@ -23,7 +23,7 @@
 #' @export
 
 
-zip_clean <- function(Zip = ... , blind = FALSE, blind_chr = "xx"){
+zip_clean <- function(Zip = ... , blind = FALSE, blind_chr = "00"){
 
     library(stringr)
 
