@@ -56,7 +56,8 @@ age_cat <- function (age = 0,
         cat <-  case_when(
             age %in% 0.0:4.9 ~ "0 to 4.9",
             age %in% 5.0:12.9 ~ "5 to 12.9",
-            age %in% 13.0:18.0 ~ "13 to 18.0") #17.9 or 18???
+            age %in% 13.0:17.9 ~ "13 to 17.9"
+            age %in% 18.0:120 ~ "not pediatric") #17.9 or 18???
     }
     else if (age_group == "combo"){
         cat <- case_when(

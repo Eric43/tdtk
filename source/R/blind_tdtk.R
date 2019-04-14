@@ -21,12 +21,15 @@
 #' @param zip_chr is the characters or numbers used to blind.  Can be
 #'     from 1-5 char is length
 #' @param age_blind is the type of age blinding for ACS Adult, ACS
-#'     combo, pediatric and all
+#'     combo, pediatric and all (cats: "peds", "combo", "adult",
+#'     "blind")
 #' @param age_clean is a T/F on if the data needs to be sent to
 #'     extract and convert the age (or some ages) from months or days
 #'     to years.  This can also return a numbberic when fed a char
 #'
-#' @return a blinded data set should not be used unless blinding data
+#' @return a blinded data set with different allowable levels of
+#'     blinding for medical or data professionals as well as public
+#'     release of data
 #'
 #' @examples
 #'
@@ -36,7 +39,7 @@
 
 blind_tdtk <- function(data_set = ...,
                        blind = "both",
-                       blind_chr = "xx",
+                       blind_chr = "00",
                        age_blind = "blind",
                        age_clean = FALSE,
                        random = FALSE)
@@ -48,19 +51,19 @@ blind_tdtk <- function(data_set = ...,
     library(purrr)
     library(dplyr)
     
-
-    if (blind == "age" && (age_clean)){
-        data_set$Age <- map(data_set$Age, age_clean)
+### Look at modifying to a case when and use dplyr ?
+    
+    if (blind == "age"){
+        if (age_clean){
+            
+            data_set$Age <- map(data_set$Age, age_clean)
+        }
+        
         data_set <- transmutate(data_set, Age = map(Age,
                                                     age_cat,
                                                     blind = age_blind))
     }
-    else if (blind == "age" && !(age_clean)){
-        
-        data_set<- transmutate(data_set,  Age = map(Age,
-                                                    age_cat,
-                                                    blind = age_blind))
-    }    
+
     else if (blind == "zip"){
 
         data_set <- transmutate(data_set, Zip = map_chr(Zip,
@@ -68,27 +71,22 @@ blind_tdtk <- function(data_set = ...,
                                                         blind_chr = blind_chr))    
     }
         
-    else if (blind == "both" && (age_clean)){
+    else if (blind == "both"{
+        if (age_clean){
+            
+            data_set$Age <- map(data_set$Age, age_clean)
+        }
         
-        data_set$Age <- map(data_set$Age, age_clean)
-        
-        data_set %>% transmutate(Age = map(Age,
+        data_set <-
+            data_set %>%  transmutate(Age = map(Age,
                                            age_cat,
                                            blind = age_blind)) %>%
             
-                     transmutate(Zip = map_chr(Zip,
+                          transmutate(Zip = map_chr(Zip,
                                                zip_clean,
                                                blind_chr = blind_chr))
     }
-    else if (blind == "both" && !(age_clean)){
-        
-        data_set %>% transmutate(Age =  Age = map(Age,
-                                                  age_cat,
-                                                  blind = age_blind)) %>%
-            
-                     transmutate(Zip = map_chr(Zip,
-                                               zip_clean,
-                                               blind_chr = blind_chr))
-    }
+   
+    
 
     return(data_set)

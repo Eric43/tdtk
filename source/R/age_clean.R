@@ -11,6 +11,7 @@
 #' @author Eric W. Olle, \email{eric.olle@@gmail.com}
 #' 
 #' @param data is the data to be cleaned
+#' @param n_round digits to round degault 2 
 #' @param conver_to is the unity of measure to convert to currently
 #'     only suuppors year.  For potential future use.
 #' 
@@ -25,6 +26,7 @@
 #' @export
 
 age_clean <- function (data = ...,
+                       n_round = 2,
                        convert_to = "yr")
 {
                                         # regex or strinr will work....
@@ -43,6 +45,6 @@ age_clean <- function (data = ...,
         age <- age/365
     }
 
-    return (age) 
+    return (round(age, digits = n_round)) 
 }
 

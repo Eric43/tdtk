@@ -34,10 +34,13 @@ clean_tdtk <- function (data_set = ...,
     ## Check on the function calls
     ## Check on the need for all to undego cleanind and not send all data
 
+### Some questions.  Need to add age cata?
+    ### Does the blinded data set get treated the same way as thr 
+
     
 
     if (na_rm = TRUE){## Removing the NA rows
-        trauma_data <- trauma_data %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
+        data_set <- data_set %>% filter(Reduce(`+`, lapply(., is.na)) != ncol(.))
     }
     
     ## Setting date time column to appropriate format
@@ -47,19 +50,32 @@ clean_tdtk <- function (data_set = ...,
     data_set <- data_set %>%
         transmutate(Age = as.numeric(map_chr(Age, age_clean)))
 
-    if (is.na(blind) || !(blind)){## If not blinded assumse need for all data
+### the next part may move to tidy_tdtk()
+    
+    if (is.na(blind)){## If not blinded assumse need for all data
         data_set <- data_set %>%
             mutate(ISS_cat = map_chr(ISS, iss_cat)) %>%
             mutate(Zip_num = as.numeric(map_chr(Zip, zip_clean))) %>%
             mutate(ICD_10grp = map_chr(ICD_10_txt, icd_cat)) %>%
             mutate(Init_disp = map_chr(ER_Disp, disp_cat)) %>%
         
+
     }
-    else if (!is.na(blind) && blind){ ## not mose efficient but easiest for differe usr grps.
+
+### Need to decide if I leave the blinding ability.  I like being
+### ablt to call from more than one funciton to make it easier for
+### end users.
+    
+    else if (!is.na(blind)){ ## not mose efficient but easiest for differe usr grps.
         data_set <- blind_tdtk(data_set = data_set, blind = blind)
     } 
     
 
+
+#### I think that merginig the zip codes need to occure after but
+#### maybe harder if the blinding chars are not numberic Mabye switch
+#### blindin to 00 first?
+    
     if (zip_geo){## Merging zip goe data maybe function it?
         data_set <- merge(data_set, zipcode, by='zip')
     }

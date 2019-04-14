@@ -142,11 +142,15 @@ colnames <- c("Age",
         }
     }
 
+
+    
     if (!is.na(blind)){
-        patient_data  <-  tdtk_blind(data = patient_data, blind = blind) #Maybe make another function
+        patient_data  <-  blind_tdtk(data_set = patient_data,
+                                     blind = blind,
+                                     age_blind = "blind") #Maybe make another function
     }
 
-    if (random) {
+    if (random) {### Check to see if date time is removed?
         patient_data  <-  shuffle(patient_data)
     }
     if (save_data && !(save_file)){
