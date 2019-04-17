@@ -10,7 +10,8 @@
 #' based upon users need. For catagories just use the standard mutate
 #' and add a data column.  If its necessary to remove the actual
 #' arrivad date and/or time one can than blind the date by using
-#' seasonal catagories along with transmutate.
+#' seasonal catagories along with transmutate. Currently the date must
+#' be passed inan appropriate as.Date format to allow for conversion
 #'
 #' @author Eric W. Olle, \email{eric.olle@@gmail.com}
 #' 
@@ -32,26 +33,48 @@
 #' 
 #' @examples
 #'
+#' test <- as.Date("Nov, 23", format = "%b, %d")
+#' date2season(test)
+#'
+#' test <- as.Date("Feb 29, 2012", format = "%b %d, %y")
+#' date2season(test)
+#'
 #' @export
 
 
 date2season <- function(date = ...,
-                        blind = FALSE,
-                        seasons = "std")
+                        seasons = "std"
+                        )
 {
 
-    library(lubridate)
+    library(dplyr)
 
-    std_seasons <- c(Spring = as.Date("March, 1", format = "%B, %d"),
-                     Summer = as.Date("June, 1", format = "%B, %d"),
-                     Fall = as.Date("September, 1", format = "%B, %d"),
-                     Winter = as.Date("December, 1", format = "%B, %d"))
+    if (class(date) != "Date"){
+        stop("date is not in the correct format")
+    }
+    else {
+        mo <- as.numeric(month(date))
+    }
+    
+    season <- case_when(
+                     mo %in% 1:2 ~ "Winter",
+                     mo %in% 3:5 ~ "Spring",
+                     mo %in%  6:9 ~ "Summer",
+                     mo %in% 10:11 ~ "Fall",
+                     mo %in%  12 ~ "Winter"
+                 )
 
-    ### Maybe try just setting Months to a look up table and then checking.
-
-
-
-
-
-
+    return(season)
+    
 }
+
+    
+
+
+
+
+
+                                        # Note as date check for
+                                        # appropriate year for leap
+                                        # testing
+
