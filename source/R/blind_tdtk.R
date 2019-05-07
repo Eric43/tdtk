@@ -71,7 +71,7 @@ blind_tdtk <- function(data_set = ...,
                                                         blind_chr = blind_chr))    
     }
         
-    else if (blind == "both"{
+    else if (blind == "both"){
         if (age_clean){
             
             data_set$Age <- map(data_set$Age, age_clean)
@@ -87,7 +87,13 @@ blind_tdtk <- function(data_set = ...,
                                                blind_chr = blind_chr))
     }
    
-    
 
-    return(data_set)
+    
+    if (random == TRUE){
+        return(shuffle(data_set))
+    }
+    else {
+        return(data_set)
+    }
+    
 }
