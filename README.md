@@ -133,7 +133,7 @@ ggplot2
   H. Wickham. ggplot2: Elegant Graphics for Data Analysis.
   Springer-Verlag New York, 2016.
   
-Tidyverse (Easy install for subset of the Hadley-verse)
+Tidyverse (Easy install for the nearly total Hadley-verse)
 
   Hadley Wickham (2017). tidyverse: Easily Install and Load the
   'Tidyverse'. R package version 1.2.1.
