@@ -41,12 +41,28 @@ blind_name <- function(data_set = ...,
                        save_name = FALSE,
                        method = "rnd",
                        blind_len = 8, # can use runif rnd
-                       file_name = NA)
+                       file_name = NA,
+                       encrypt = ...,
+                       passphrase = NA)
 {
     library(dplyr)
+    library(openssl)
+
+### work on two methods one pass pharse and other fully random pass to prevent reident
     
+### give one or a vector of names, hosptial names etc, passphrase (opt) for full random
+### blind with no pass pharse seet blind to rnd.
+### Blind settings are: "encrypt" or "decrypt" these require passpharses
+### next is the rnd that randomly assigns a string of number/letters/characters that are
+### a set length (Blind length).  This uses the encrypt_tdtk to make the encrypttion.
 
+                                        # Set the cases for the blinding method
 
+    
+    
+    
+    
+    
 
 }
 
