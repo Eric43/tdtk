@@ -1,13 +1,19 @@
 
-#' Crypto TDTK is an encryption|decryption function designed to
-#' provide basic protection for potential PHI.
+#' encryp tdtk is an encryption function designed to provide basic
+#' protection for potential PHI.  This is basic for encrypting files
+#' that may or may not contain HIPAA protected PHI to proveid an
+#' encrypted passphrase protected data set
 #'
 #' Given a data set and a secret password or passphrase this function
 #' will
 #' 
-#' The blind_name is a function designed with the ability to blind and
-#' remove names as well as save a look up file IFF needed.  This
-#' function was inspired and the encryption code was obtained from:
+#' The encrypt tdtk is designed to act as a basic encryption method
+#' for the data set that may or may not contain PHI.  It is possible
+#' but not tested that a script could be written in a EHR server side
+#' scenario (Docker?) to queery, blind and encrpyt pritr to sending
+#' the data to the researcher/trauma medical director.
+#' 
+#' Function was inspired and the encryption code was obtained from:
 #'
 #' https://stackoverflow.com/questions/52851725/
 #' how-to-protect-encrypt-r-objects-in-rdata-files-due-to-eu-gdpr
@@ -33,7 +39,7 @@
 #' @return a saved encrypted RDS file with a secret passphrase or a
 #'     decrypted RDS file from a prior tdtk data set
 #'
-#' g@examples
+#' @examples
 #'
 #' /dontrun{
 #'
@@ -41,7 +47,7 @@
 #' 
 #' #saving data
 #' 
-#' crypto_tdtk(data_set = wv_trama,
+#' encryp_tdtk(data_set = wv_trama,
 #' password = "Take me home...",
 #' file_name = "wv_trauma") *Note Add the crypt in paste fx
 #'
@@ -110,6 +116,9 @@ encrypt_tdtk <- function(data_set = ...,
 
 #### _____Converting password to key______ ####
 
+### Pass2key is needed in other functions.  May copy or put as
+### general utility outside of the source?
+    
     pass2key <- function(password)
         
     {
