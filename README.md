@@ -91,11 +91,71 @@ In conclusion, the tdtk-package is designed to be used by anyone in the medical 
 
 R core team
 
-Tidyverse (individually or all?? Hadley Wicham is the R ubermensch. But a ton of contributors aided in development of this super-package)
+  R Core Team (2018). R: A language and environment for statistical
+  computing. R Foundation for Statistical Computing, Vienna, Austria.
+  URL https://www.R-project.org/.
+  
+dplyr
 
-GGMAP (Awesome little package that did a great job working with the new google api interface)
+  Hadley Wickham, Romain François, Lionel Henry and Kirill Müller
+  (2019). dplyr: A Grammar of Data Manipulation. R package version
+  0.8.0.1. https://CRAN.R-project.org/package=dplyr
+  
+Magrittr (? tidyverse? the pipe command...but seems to work in the universe)
+
+  Stefan Milton Bache and Hadley Wickham (2014). magrittr: A
+  Forward-Pipe Operator for R. R package version 1.5.
+  https://CRAN.R-project.org/package=magrittr
+
+readr
+
+  Hadley Wickham, Jim Hester and Romain Francois (2018). readr: Read
+  Rectangular Text Data. R package version 1.3.1.
+  https://CRAN.R-project.org/package=readr
+
+tidyr
+
+
+  Hadley Wickham and Lionel Henry (2019). tidyr: Easily Tidy Data with
+  'spread()' and 'gather()' Functions. R package version 0.8.3.
+  https://CRAN.R-project.org/package=tidyr
+
+
+purrr (map instead of apply)
+
+  Lionel Henry and Hadley Wickham (2019). purrr: Functional Programming
+  Tools. R package version 0.3.2.
+  https://CRAN.R-project.org/package=purrr
+
+
+ggplot2
+
+  H. Wickham. ggplot2: Elegant Graphics for Data Analysis.
+  Springer-Verlag New York, 2016.
+  
+Tidyverse (Easy install for the nearly total Hadley-verse)
+
+  Hadley Wickham (2017). tidyverse: Easily Install and Load the
+  'Tidyverse'. R package version 1.2.1.
+  https://CRAN.R-project.org/package=tidyverse
+  
+ggmap
+  
+  D. Kahle and H. Wickham. ggmap: Spatial Visualization with ggplot2.
+  The R Journal, 5(1), 144-161. URL
+  http://journal.r-project.org/archive/2013-1/kahle-wickham.pdf
+  
+  
+Forecast (ARIMA Modeling.  Awesome package IMO)
+
+ Hyndman R, Athanasopoulos G, Bergmeir C, Caceres G, Chhay L,
+ O'Hara-Wild M, Petropoulos F, Razbash S, Wang E and Yasmeen F (2019).
+ _forecast: Forecasting functions for time series and linear models_. R
+ package version 8.5, <URL: http://pkg.robjhyndman.com/forecast>.
+
+Need Random Forest ('02 or '03 paper?), LM and PCA refs
 
 ## Clinical References
 
-
+Work on 
 
