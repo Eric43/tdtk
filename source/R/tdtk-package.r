@@ -45,6 +45,11 @@
 #' @section blind_tdtk: This function is designed to blind the data
 #'     set in multiple ways.
 #'
+#' @section blind_name this function is designed to remove names of
+#'     hospitals or doctors and replace with a randomized character
+#'     string.  The initial use was to remove hospital names and later
+#'     doctor names for machine learning algorighitms.
+#'
 #' @section trauma_sim: Basic function to take some patient records
 #'     and randomixe columns and other factors to make the data not
 #'     identifieable.  For examle it will always randomize the Age and

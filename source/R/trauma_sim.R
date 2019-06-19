@@ -19,15 +19,14 @@
 #'
 #'
 #' 
-trauma_sim <- function(n_size = 2000,
-                       p_trauma = ..., # a look up table of trauma P's
-                       rej_sample = FALSE,
-
-                       sim_type = "pt",
-                       lon = ...,
-                       lat = ...,
-                       map_attrb = ..., 
-                       sim_type = "pt")
+trauma_sim <- function(data_set = ...,
+                       n_records = 1500,
+                       rnd_col = c{"Age", "Zip", "ICD", "ISS"),
+                       max_rnd = 8,
+                       min_rnd = 1)
+#### Currently basic funciton meant to randomize a data set
+#### Ulitimate goal is to allow for this and fully sim datasets
+    
 
 {
 

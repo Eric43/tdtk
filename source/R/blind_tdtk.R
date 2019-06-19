@@ -66,7 +66,7 @@ blind_tdtk <- function(data_set = ...,
 
     else if (blind == "zip"){
 
-        data_set <- transmutate(data_set, Zip = map_chr(Zip,
+*9        data_set <- transmutate(data_set, Zip = map_chr(Zip,
                                                         zip_clean,
                                                         blind_chr = blind_chr))    
     }

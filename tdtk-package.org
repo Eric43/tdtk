@@ -44,7 +44,6 @@ statistical program." (ACS orange book chapter 15)
 
 Currently there are basic National Trauma Database (NTB) and Trauma
 Quality Improvement Process (?) (TQUIP) summary analysis that allow
-<<<<<<< HEAD
 for basic bench marking.  This can provide trauma surgeons (defined as:
 Advanced practice Surgeons with added credentials in Trauma and/or
 Critical Care), with a broad overview of their trauma practice.
@@ -66,7 +65,6 @@ it seems necessary that these models be applied to the disease of
 trauma.  Some of the current non-standard summary statistical models
 include (but are only limited by imagination):  linear modeling LOS to
 ISS, Multi-group LM of LOS v ISS, multi-variate  analysis using linear
-=======
 for basic benchmarking.  This can provide trauma surgeons (defined as:
 Adavanced ractice Surgeons with added creditials in Trauma and/or
 Critical Care), with a broad overview of thier trauma practice.
@@ -124,10 +122,18 @@ specific statistical analysis software.
 * Functions Overview
 
 -  age_cat() DONE
+-  age_clean() removes extranouse characters and converts from month
+  or days to year of age
 -  blind_tdtk() TODO was part of read_tdtk but separating for ease of
    use.
+-  blind_name() basic blinding function to remove the names.  In the
+  future may add encryption options to allow for blinding except with
+  appropriate private key/passpharse.
 -  ctr2cir() DONE
 -  center2circle() DONE
+-  clean_tdtk() 
+-  date2season() converts from a date to standard seasons or by
+  solstice/equinox dates (furutre)
 -  disp_cat() DONE (basic) Dispensation cats derived from limited subset
 - icd_cat() DONE (basic) ICD categories based on text needs updating 
 - iss_cat() DONE Used standard referenced ISS bins
@@ -138,6 +144,10 @@ specific statistical analysis software.
   way to find commonly traveled routes etc.
 - zip_clean() DONE (basic) derived from a limited subset need to
   rewrite using regex and extract the necessary run of 5 0...9.
+- encrypt_tdtk() is a basic encryption with save option to protect
+  potental PHI
+- decrypt_tdtk() works in conjunction with encrypt_tdtk() as a decrypt
+  and read file function.
 
 
 
