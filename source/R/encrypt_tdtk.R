@@ -1,11 +1,11 @@
 
-#' encryp tdtk is an encryption function designed to provide basic
+#' Encryp tdtk is an encryption function designed to provide basic
 #' protection for potential PHI.  This is basic for encrypting files
 #' that may or may not contain HIPAA protected PHI to proveid an
 #' encrypted passphrase protected data set
 #'
 #' Given a data set and a secret password or passphrase this function
-#' will
+#' will.  
 #' 
 #' The encrypt tdtk is designed to act as a basic encryption method
 #' for the data set that may or may not contain PHI.  It is possible
@@ -24,7 +24,7 @@
 #' 
 #' @param data_set is the data set to be cleaned
 #' 
-#' @param 
+#' @param blind is a T/F that will fully blind the data set (Not working)
 #'
 #' @param password is a password or passphrase used for the
 #'     generation of the key for data encryption.  Keep this secret
@@ -33,8 +33,15 @@
 #' @param file_name is the name for the file to be encrypted and saved
 #'     or decrypted
 #'
-#' @param derypt if this is TRUE will look to read a file, attempt to
-#'     decrypt it using the included password and return the data set.
+#' @param save_file is T/F of if the encrypted file is saved, returned
+#'     or nother
+#'
+#' @param return_encrypt instead of saving the file it returns the
+#'     encrypted information to be used as needed by the end
+#'     user. NOTE will consider just using the save_file T/F as a auto
+#'     setting to either save or teturn so this function does somethin
+#'     usefull instead of encryptin g data set and return nothing or
+#'     save nothing.
 #'
 #' @return a saved encrypted RDS file with a secret passphrase or a
 #'     decrypted RDS file from a prior tdtk data set
@@ -78,6 +85,8 @@ encrypt_tdtk <- function(data_set = ...,
 
     library(openssl)
     library(dplyr)
+    library(magrittr)
+
 
 #### do file name stuff
 

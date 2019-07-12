@@ -53,7 +53,6 @@
 #'
 
 decrypt_tdtk <- function(data_set = ...,
-                         blind = FALSE,
                          password = NA,
                          file_name = NA,
                          read_file = FALSE) 
@@ -61,6 +60,7 @@ decrypt_tdtk <- function(data_set = ...,
 
     library(openssl)
     library(dplyr)
+    library(magrittr)
 
 #### do file name stuff
 
@@ -68,6 +68,8 @@ decrypt_tdtk <- function(data_set = ...,
     
 #### ____Required Functions_______ ####
 
+### I may want to put the pass2key as seperate funct used twice
+    
 
 #### ____Checking basic params_______ ####
     
