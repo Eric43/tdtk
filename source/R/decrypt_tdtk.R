@@ -19,8 +19,6 @@
 #' 
 #' @param data_set is the data set to be cleaned
 #' 
-#' @param 
-#'
 #' @param password is a passwork or passpharase used for the
 #'     generation of the key for data encryption.  Keep this secret
 #'     and do not share it or save to a varivle
@@ -58,9 +56,9 @@ decrypt_tdtk <- function(data_set = ...,
                          read_file = FALSE) 
 {
 
-    library(openssl)
-    library(dplyr)
-    library(magrittr)
+    require(openssl) ## Use for decrypt and pass2key
+    require(dplyr) ### Maybe remove?
+    require(magrittr) ## pipe ops
 
 #### do file name stuff
 
@@ -99,8 +97,8 @@ decrypt_tdtk <- function(data_set = ...,
     pass2key <- function(password)
         
     {
-        library(openssl)
-        library(dplyr)
+        library(openssl) ## char and sha conversion
+        library(magrittr)  ## pipe
         
         key <- password %>%
             charToRaw() %>%
@@ -117,6 +115,8 @@ decrypt_tdtk <- function(data_set = ...,
 
 ####____Main____####
 
+    library(openssl) #for unserialize 
+    
     if (read_file){
         encrypt_file <-  readRDS(file_name)
     }

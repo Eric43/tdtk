@@ -83,9 +83,9 @@ encrypt_tdtk <- function(data_set = ...,
                          return_encrypt = TRUE) #Decryption is reading
 {
 
-    library(openssl)
-    library(dplyr)
-    library(magrittr)
+    require(openssl)
+    require(dplyr)
+    require(magrittr)
 
 
 #### do file name stuff
@@ -132,7 +132,7 @@ encrypt_tdtk <- function(data_set = ...,
         
     {
         library(openssl)
-        library(dplyr)
+        library(magrittr)
         
         key <- password %>%
             charToRaw() %>%
@@ -146,6 +146,7 @@ encrypt_tdtk <- function(data_set = ...,
 ####____Main____####
 
 
+    library(openssl)
     
     if(param_check()){
         
