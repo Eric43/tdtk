@@ -50,7 +50,7 @@ blind_tdtk <- function(data_set = ...,
 
     library(purrr)
     library(dplyr)
-    
+    library(magrittr) 
 ### Look at modifying to a case when and use dplyr ?
     
     if (blind == "age"){
@@ -66,7 +66,7 @@ blind_tdtk <- function(data_set = ...,
 
     else if (blind == "zip"){
 
-*9        data_set <- transmutate(data_set, Zip = map_chr(Zip,
+        data_set <- transmutate(data_set, Zip = map_chr(Zip,
                                                         zip_clean,
                                                         blind_chr = blind_chr))    
     }

@@ -31,9 +31,9 @@ disp_cat <- function (disp = "Floor"){
     if (is.na(disp)){
         cat <- "not determined"
 
-    }else if ((disp == "Floor" ||
+    }else if  (disp == "Floor" ||
                disp == "Intensive Care Unit" ||
-               disp == "Neonatal/Pediatric Care Unit") ||
+               disp == "Neonatal/Pediatric Care Unit" ||
                disp == "Observation Unit" ||
                disp == "Operating Room" ||
                disp == "Step-Down Unit")

@@ -62,7 +62,7 @@ route2center <- function (data_set = ...,
                                structure = "route"))
         
     }
-    else if (is.na(ceter_name) && !zip){
+    else if (is.na(center_name) && !zip){
         routes <- mutate(route(from = c(data_set$lon,
                                         data_set&lat),                         
                                to = center_name,
