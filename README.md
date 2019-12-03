@@ -8,6 +8,10 @@ Trauma director tool kit repository
 -  Dr. Tiffany Lasky
 -  Dr. Sarah Robison
 
+### Background Literature Search/ References
+
+- Zach Easley
+
 # Description
 The trauma director tool kit is a collection of files and packages designed to allow trauma professionals to analyze, blind and graphically display pertinent clinical information.  Where possible the ACS care of the critically injured patient criteria are used:
 
@@ -157,5 +161,5 @@ Need Random Forest ('02 or '03 paper?), LM and PCA refs
 
 ## Clinical References
 
-Work on 
+JabRef/BbiTex databales/list in progress (Zach)
 
