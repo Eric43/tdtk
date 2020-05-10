@@ -1,4 +1,7 @@
 # Trauma Director Tool Kit (tdtk)
+
+Currently this project is on hold.  Please contact the author/creator if you are interested in continued development of tdtk package.
+
 Trauma director tool kit repository
 
 ## __Special thanks to all contributors__
