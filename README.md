@@ -1,10 +1,14 @@
 # Trauma Director Tool Kit (tdtk)
 
-Currently this project is on hold.  Please contact the author/creator if you are interested in continued development of tdtk package.
+Currently this project is in testing and vignette development (Thanks Pete!)
 
 Trauma director tool kit repository
 
 ## __Special thanks to all contributors__
+
+### Package Development and Testing
+
+-  Peter Skatch
 
 ### Clinical Team/Initial Development
 
