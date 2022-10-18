@@ -8,7 +8,7 @@ Trauma director tool kit repository
 
 ### Package Development and Testing
 
--  Peter Skatch
+-  Peter Skach
 
 ### Clinical Team/Initial Development
 
